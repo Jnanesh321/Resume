@@ -6,9 +6,22 @@
 <title>Jnanesh Sharma H. — Backend Developer &amp; CS Engineer | Portfolio</title>
 <meta name="description" content="Portfolio of Jnanesh Sharma H. — Computer Science Engineering Student at VCET (VTU, 3rd Year) and Backend Developer specializing in Node.js, Express, REST APIs, and resilient systems.">
 <meta name="keywords" content="Jnanesh Sharma, Backend Developer, Node.js, Express, REST API, India, VCET, VTU, Portfolio">
-<meta property="og:title" content="Jnanesh Sharma H. — Backend Developer &amp; CS Engineer">
+  <!-- Enhanced OpenGraph & Twitter Meta Tags -->
+  <meta property="og:title" content="Jnanesh Sharma H. — Backend &amp; Systems Engineer">
+  <meta property="og:description" content="Portfolio of Jnanesh Sharma H. — CS Student at VCET (VTU, 3rd Year) and Backend Developer specializing in Node.js, Express, Java 17, and high-throughput systems.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Jnanesh Sharma H. — Backend &amp; Systems Engineer">
+  <meta name="twitter:description" content="Node.js, Express, Java 17, and high-throughput systems. Architect of MGU.One (20 TPS) and production JWT/FCM backends.">
+  <meta name="twitter:image" content="/assets/og-image.png">
+  <!-- Legacy og tags -->
+  <meta property="og:old-title" content="Jnanesh Sharma H. — Backend Developer &amp; CS Engineer">
 <meta property="og:description" content="Computer Science Engineering Student &amp; Backend Developer specializing in Node.js, Express, and distributed community systems.">
 <meta property="og:type" content="website">
+<link rel="stylesheet" href="/css/tokens.css">
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Syne:wght@400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
   /* ── CONFIG: Edit these variables to customise ── */
@@ -1148,7 +1161,7 @@
   @keyframes blink { 50% { border-color: transparent; } }
 
   /* ── LIGHT MODE SYSTEM ── */
-  html[data-theme="light"] {
+  html[data-color-scheme="light"], html[data-theme-mode="light"] {
     --bg: #f8fafc;
     --surface: #ffffff;
     --border: rgba(15, 23, 42, 0.1);
@@ -1157,35 +1170,35 @@
     --accent: #0284c7;
     --accent2: #4f46e5;
   }
-  html[data-theme="light"] nav {
+  html[data-color-scheme="light"], html[data-theme-mode="light"] nav {
     background: rgba(248, 250, 252, 0.88);
   }
-  html[data-theme="light"] .hero-grid-bg {
+  html[data-color-scheme="light"], html[data-theme-mode="light"] .hero-grid-bg {
     background-image:
       linear-gradient(rgba(15, 23, 42, 0.05) 1px, transparent 1px),
       linear-gradient(90deg, rgba(15, 23, 42, 0.05) 1px, transparent 1px);
   }
-  html[data-theme="light"] .hero-name .line2 {
+  html[data-color-scheme="light"], html[data-theme-mode="light"] .hero-name .line2 {
     -webkit-text-stroke: 1.5px rgba(15, 23, 42, 0.3);
   }
-  html[data-theme="light"] .btn-primary {
+  html[data-color-scheme="light"], html[data-theme-mode="light"] .btn-primary {
     background: var(--accent);
     color: #ffffff;
   }
-  html[data-theme="light"] .btn-primary:hover {
+  html[data-color-scheme="light"], html[data-theme-mode="light"] .btn-primary:hover {
     background: #0369a1;
     color: #ffffff;
   }
-  html[data-theme="light"] .skill-card {
+  html[data-color-scheme="light"], html[data-theme-mode="light"] .skill-card {
     background: #f1f5f9;
   }
-  html[data-theme="light"] .skill-card:hover {
+  html[data-color-scheme="light"], html[data-theme-mode="light"] .skill-card:hover {
     background: #ffffff;
   }
-  html[data-theme="light"] .tech-pill {
+  html[data-color-scheme="light"], html[data-theme-mode="light"] .tech-pill {
     background: rgba(15, 23, 42, 0.04);
   }
-  html[data-theme="light"] .modal-code-box {
+  html[data-color-scheme="light"], html[data-theme-mode="light"] .modal-code-box {
     background: #0f172a;
     color: #e2e8f0;
   }
@@ -2571,10 +2584,266 @@
     animation: mcCreeperHiss 0.7s infinite alternate ease-in-out;
   }
 
+
+  /* ── FOCUS STATES FOR WCAG 2.1 AA ── */
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, [tabindex]:focus-visible {
+    outline: 2px solid var(--color-accent, #38bdf8) !important;
+    outline-offset: 3px !important;
+    box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.35) !important;
+  }
+
+  /* ── SECTION SCROLL PADDING (FIX STICKY NAV OVERLAP) ── */
+  section, #hero, #about, #skills, #projects, #experience, #contact {
+    scroll-margin-top: calc(var(--nav-height, 72px) + 1.5rem);
+  }
+
+  #hero {
+    padding-top: calc(var(--nav-height, 72px) + 3rem) !important;
+  }
+
+  /* ── HERO NAME WRAP FIX ── */
+  .hero-name {
+    font-size: clamp(2rem, 5.4vw, 4.2rem) !important;
+    line-height: 1.12 !important;
+    word-break: normal;
+  }
+  .hero-name .line2 {
+    white-space: nowrap !important;
+    display: inline-block;
+    color: #e8edf3 !important;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.45) !important;
+  }
+
+  /* ── ACCESSIBLE THEME SWITCHER MENU ── */
+  .theme-switcher-wrap {
+    position: relative;
+    display: inline-block;
+  }
+  .theme-menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--border, rgba(255,255,255,0.12));
+    border-radius: 6px;
+    color: var(--text, #e8edf3);
+    padding: 0.45rem 0.9rem;
+    font-size: 0.82rem;
+    font-family: var(--font-mono, monospace);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .theme-menu-toggle:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: var(--color-accent, #38bdf8);
+  }
+  .theme-chevron {
+    font-size: 0.65rem;
+    opacity: 0.7;
+    transition: transform 0.2s ease;
+  }
+  .theme-menu-toggle[aria-expanded="true"] .theme-chevron {
+    transform: rotate(180deg);
+  }
+  .theme-menu-dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    min-width: 250px;
+    background: #0f1722;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 8px;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.7);
+    padding: 6px;
+    z-index: 1000;
+  }
+  .theme-menu-dropdown.open {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .theme-menu-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 8px 10px;
+    background: transparent;
+    border: none;
+    border-radius: 5px;
+    color: #cbd5e1;
+    font-size: 0.8rem;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .theme-menu-item:hover, .theme-menu-item:focus {
+    background: rgba(56, 189, 248, 0.12);
+    color: #ffffff;
+  }
+  .theme-menu-item.active {
+    background: rgba(56, 189, 248, 0.18);
+    color: #38bdf8;
+    font-weight: 600;
+  }
+  .theme-swatch {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+  .theme-item-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.25;
+  }
+  .theme-item-text strong {
+    font-size: 0.82rem;
+  }
+  .theme-item-text small {
+    font-size: 0.68rem;
+    opacity: 0.75;
+  }
+
+  /* ── GROUPED SKILL TIERS (NO PERCENTAGE BARS) ── */
+  .skill-tiers-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3.5rem;
+  }
+  .skill-tier-card {
+    background: var(--surface, #0f1722);
+    border: 1px solid var(--border, rgba(255,255,255,0.08));
+    border-radius: 8px;
+    padding: 2rem 1.6rem;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+  .skill-tier-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-accent, #38bdf8);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+  }
+  .tier-badge {
+    align-self: flex-start;
+    font-family: var(--font-mono, monospace);
+    font-size: 0.65rem;
+    color: var(--color-accent, #38bdf8);
+    background: rgba(56, 189, 248, 0.1);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.9rem;
+  }
+  .tier-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+    color: var(--text, #e8edf3);
+  }
+  .tier-desc {
+    font-family: var(--font-mono, monospace);
+    font-size: 0.76rem;
+    color: var(--muted, #94a3b8);
+    line-height: 1.65;
+    margin-bottom: 1.4rem;
+    flex-grow: 1;
+  }
+  .tier-skills-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+  }
+  .tier-skill-pill {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #e2e8f0;
+    font-size: 0.74rem;
+    font-family: var(--font-mono, monospace);
+    padding: 0.3rem 0.65rem;
+    border-radius: 4px;
+  }
+
+  /* ── TWO-COLUMN BALANCED TIMELINE (NO EMPTY RIGHT HALF) ── */
+  .timeline-two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3.5rem;
+    margin-top: 3.5rem;
+  }
+  .timeline-col-header {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 1.8rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-accent, #38bdf8);
+    border-bottom: 1px solid var(--border, rgba(255,255,255,0.1));
+    padding-bottom: 0.6rem;
+  }
+  .timeline-col-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .timeline-block {
+    position: relative;
+    padding-left: 1.6rem;
+    border-left: 2px solid var(--border, rgba(255,255,255,0.12));
+  }
+  .timeline-block::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 4px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--surface, #0f1722);
+    border: 2px solid var(--color-accent, #38bdf8);
+  }
+  .timeline-block-period {
+    font-family: var(--font-mono, monospace);
+    font-size: 0.68rem;
+    color: var(--color-accent, #38bdf8);
+    margin-bottom: 0.3rem;
+    letter-spacing: 0.06em;
+  }
+  .timeline-block-role {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text, #e8edf3);
+    margin-bottom: 0.25rem;
+  }
+  .timeline-block-org {
+    font-family: var(--font-mono, monospace);
+    font-size: 0.78rem;
+    color: var(--muted, #94a3b8);
+    margin-bottom: 0.6rem;
+  }
+  .timeline-block-desc {
+    font-family: var(--font-mono, monospace);
+    font-size: 0.75rem;
+    color: var(--muted, #94a3b8);
+    line-height: 1.65;
+  }
+
+  @media (max-width: 900px) {
+    .skill-tiers-grid { grid-template-columns: 1fr; }
+    .timeline-two-col { grid-template-columns: 1fr; gap: 2.5rem; }
+  }
+
 </style>
   <!-- Minecraft Theme Retro VFX & Tactile Engine -->
   <link rel="stylesheet" href="/assets/themes/minecraft/minecraft-experience.css">
   <link rel="stylesheet" href="/assets/themes/minecraft/minecraft-vfx.css">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 </head>
 <body>
 
@@ -2582,22 +2851,54 @@
 <nav id="navbar">
   <a href="#hero" class="nav-logo">JN</a>
   <div class="nav-right-cluster">
-    <!-- Torch Dark/Light Toggle with Banter (Vector SVGs with yellow glow & white background) -->
-    <div class="torch-box">
-      <button class="torch-btn" id="torch-btn" aria-label="Toggle Torch (Dark / Light Mode)" title="Click to strike the torch!">
-        <span class="torch-icon-wrap" id="torch-icon-wrap">
-          <img id="torch-img" src="/assets/torch-off.svg" alt="Torch Off" class="torch-img-svg" />
-        </span>
-        <span class="torch-label" id="torch-label">Torch Off</span>
-        <span class="torch-status-dot" id="torch-dot"></span>
+    <!-- Accessible Theme Switcher Dropdown -->
+    <div class="theme-switcher-wrap">
+      <button id="theme-menu-toggle" class="theme-menu-toggle" aria-haspopup="true" aria-expanded="false" aria-label="Select visual theme">
+        <span class="theme-icon">🎨</span>
+        <span id="theme-menu-current-label">Obsidian Dark</span>
+        <span class="theme-chevron">▾</span>
       </button>
-      <div class="torch-banter-bubble" id="torch-banter">
-        <div class="banter-meta"><span>🔥 Cave Banter</span><span id="banter-mode">Dark Mode</span></div>
-        <div id="banter-text">It's dark in here... click the torch to light up!</div>
+      <div id="theme-menu-dropdown" class="theme-menu-dropdown" role="menu" aria-label="Visual Theme Picker">
+        <button role="menuitem" class="theme-menu-item active" data-theme-target="obsidian">
+          <span class="theme-swatch" style="background:#090d13;border:1px solid #38bdf8;"></span>
+          <span class="theme-item-text">
+            <strong>Obsidian Dark</strong>
+            <small>Default · Core Identity</small>
+          </span>
+        </button>
+        <button role="menuitem" class="theme-menu-item" data-theme-target="apple">
+          <span class="theme-swatch" style="background:#1c1c1e;border:1px solid rgba(255,255,255,0.3);"></span>
+          <span class="theme-item-text">
+            <strong>Apple Glass</strong>
+            <small>Frosted Glass · SF Bento</small>
+          </span>
+        </button>
+        <button role="menuitem" class="theme-menu-item" data-theme-target="aws">
+          <span class="theme-swatch" style="background:#232f3e;border:1px solid #ff9900;"></span>
+          <span class="theme-item-text">
+            <strong>AWS Cloud Console</strong>
+            <small>Squid Navy · CloudShell</small>
+          </span>
+        </button>
+        <button role="menuitem" class="theme-menu-item" data-theme-target="netflix">
+          <span class="theme-swatch" style="background:#141414;border:1px solid #e50914;"></span>
+          <span class="theme-item-text">
+            <strong>Netflix Cinematic</strong>
+            <small>N-Red · Billboard Hero</small>
+          </span>
+        </button>
+        <button role="menuitem" class="theme-menu-item" data-theme-target="minecraft">
+          <span class="theme-swatch" style="background:#0d120d;border:1px solid #3f8e3f;"></span>
+          <span class="theme-item-text">
+            <strong>Minecraft AIBridge</strong>
+            <small>8-Bit Retro · XP Bar</small>
+          </span>
+        </button>
       </div>
     </div>
+  </div>
 
-    <!-- Mobile Hamburger Toggle -->
+  <!-- Mobile Hamburger Toggle -->
     <button class="nav-toggle-btn" id="nav-toggle-btn" aria-label="Toggle Navigation Menu">
       <span class="hamburger-bar"></span>
       <span class="hamburger-bar"></span>
@@ -2681,7 +2982,7 @@
           <button type="button" class="term-expand-btn" id="term-expand-btn" onclick="event.stopPropagation(); toggleTermFullscreen()" title="Toggle Fullscreen Immersion">⛶ Fullscreen</button>
           <span class="sys-tag">Node v20.x</span>
           <span class="sys-tag">Express API Online</span>
-          <span class="sys-tag">India 🇮🇳</span>
+          <span class="sys-tag">India <span class="flag-icon-wrap" title="India" aria-label="India"><svg width="18" height="12" viewBox="0 0 18 12" style="vertical-align:middle;border-radius:2px;display:inline-block;margin:0 4px;"><rect width="18" height="4" fill="#FF9933"/><rect y="4" width="18" height="4" fill="#FFFFFF"/><rect y="8" width="18" height="4" fill="#138808"/><circle cx="9" cy="6" r="1.5" fill="#000080"/></svg></span></span>
           <span class="terminal-live-badge">INTERACTIVE CLI</span>
         </div>
       </div>
@@ -2723,7 +3024,8 @@
         <!-- Active Input Line with Real Command Execution -->
         <div class="term-input-row" id="term-input-row" onclick="event.stopPropagation()">
           <span class="term-prompt">jnanesh@vcet-workstation:~$</span>
-          <input type="text" id="term-cli-input" class="term-cli-input" placeholder="type 'help' or press Tab..." autocomplete="off" spellcheck="false" />
+          <label for="term-cli-input" id="term-cli-label" class="sr-only" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Terminal Command Input</label>
+          <input type="text" id="term-cli-input" aria-labelledby="term-cli-label" class="term-cli-input" placeholder="type 'help' or press Tab..." autocomplete="off" spellcheck="false" />
           <div id="term-autocomplete-hint" class="term-autocomplete-hint"></div>
         </div>
       </div>
@@ -2737,76 +3039,62 @@
 
 <!-- SKILLS -->
 <section id="skills">
-  <div class="section-label">Toolkit</div>
-  <h2 class="section-title reveal">What I <em>Know</em></h2>
-  <div class="skills-grid">
+  <div class="section-label">Toolkit &amp; Competencies</div>
+  <h2 class="section-title reveal">Technical <em>Stack</em></h2>
+  <div class="section-sub reveal" style="font-family:var(--font-mono);font-size:0.8rem;color:var(--muted);max-width:600px;margin-top:-0.5rem;margin-bottom:2rem;">
+    Categorized by operational depth &amp; verified engineering experience across production backends, server daemons, and algorithms.
+  </div>
 
-    <div class="skill-card reveal" data-target-pct="68">
-      <div class="skill-icon">⚡</div>
-      <div class="skill-name">Languages</div>
-      <div class="skill-desc">C++, C, JavaScript, Java, Python &mdash; writing clean, performant code across systems, backend web services, and algorithmic problem solving.</div>
-      <div class="skill-bar"><div class="skill-fill" style="--w:0.68"></div></div>
-      <div class="skill-meta">
-        <span class="skill-level">Advanced</span>
-        <span class="skill-pct-badge"><span class="pct-val">0</span>%</span>
+  <div class="skill-tiers-grid">
+    <!-- Tier 1: Core -->
+    <div class="skill-tier-card reveal">
+      <span class="tier-badge">Tier 1 · Production Ready</span>
+      <h3 class="tier-title">Core Competencies</h3>
+      <p class="tier-desc">Primary technologies, paradigms, and algorithmic foundations utilized in production backends, server operations, and daily engineering.</p>
+      <div class="tier-skills-wrap">
+        <span class="tier-skill-pill">Node.js</span>
+        <span class="tier-skill-pill">Express.js</span>
+        <span class="tier-skill-pill">RESTful APIs</span>
+        <span class="tier-skill-pill">JavaScript (ES6+)</span>
+        <span class="tier-skill-pill">Java 17</span>
+        <span class="tier-skill-pill">C++</span>
+        <span class="tier-skill-pill">MongoDB</span>
+        <span class="tier-skill-pill">Data Structures</span>
+        <span class="tier-skill-pill">OOP Architecture</span>
+        <span class="tier-skill-pill">DBMS</span>
       </div>
     </div>
 
-    <div class="skill-card reveal reveal-delay-1" data-target-pct="70">
-      <div class="skill-icon">🌐</div>
-      <div class="skill-name">Backend &amp; Web Dev</div>
-      <div class="skill-desc">Node.js, Express.js, RESTful APIs, React, MongoDB (MERN). Modular controllers, request validation middleware, and token-based security.</div>
-      <div class="skill-bar"><div class="skill-fill" style="--w:0.70"></div></div>
-      <div class="skill-meta">
-        <span class="skill-level">Advanced</span>
-        <span class="skill-pct-badge"><span class="pct-val">0</span>%</span>
+    <!-- Tier 2: Working Knowledge -->
+    <div class="skill-tier-card reveal reveal-delay-1">
+      <span class="tier-badge" style="color:#818cf8;border-color:rgba(129,140,248,0.3);background:rgba(129,140,248,0.1);">Tier 2 · Applied Stack</span>
+      <h3 class="tier-title">Working Knowledge</h3>
+      <p class="tier-desc">Applied web frameworks, systems tooling, and authentication pipelines actively used in projects and team environments.</p>
+      <div class="tier-skills-wrap">
+        <span class="tier-skill-pill">React</span>
+        <span class="tier-skill-pill">C</span>
+        <span class="tier-skill-pill">Python</span>
+        <span class="tier-skill-pill">Git &amp; GitHub</span>
+        <span class="tier-skill-pill">Relational Schemas</span>
+        <span class="tier-skill-pill">Linux / Bash</span>
+        <span class="tier-skill-pill">Hardened JWT Auth</span>
+        <span class="tier-skill-pill">Firebase FCM</span>
       </div>
     </div>
 
-    <div class="skill-card reveal reveal-delay-2" data-target-pct="65">
-      <div class="skill-icon">🔒</div>
-      <div class="skill-name">Auth &amp; Cloud Services</div>
-      <div class="skill-desc">JWT authentication security, Firebase Cloud Messaging (FCM), Firestore indexing, and background schedulers for automated reminders.</div>
-      <div class="skill-bar"><div class="skill-fill" style="--w:0.65"></div></div>
-      <div class="skill-meta">
-        <span class="skill-level">Intermediate–Advanced</span>
-        <span class="skill-pct-badge"><span class="pct-val">0</span>%</span>
+    <!-- Tier 3: Exploring -->
+    <div class="skill-tier-card reveal reveal-delay-2">
+      <span class="tier-badge" style="color:#4ade80;border-color:rgba(74,222,128,0.3);background:rgba(74,222,128,0.1);">Tier 3 · Systems Research</span>
+      <h3 class="tier-title">Exploring &amp; Concurrency</h3>
+      <p class="tier-desc">Specialized distributed architectures, headless AI bridge daemons, and asynchronous thread decoupling models.</p>
+      <div class="tier-skills-wrap">
+        <span class="tier-skill-pill">Bukkit Async Concurrency</span>
+        <span class="tier-skill-pill">Paper API (Minecraft)</span>
+        <span class="tier-skill-pill">AI Headless Bridges</span>
+        <span class="tier-skill-pill">In-process Schedulers</span>
+        <span class="tier-skill-pill">Distributed Microservices</span>
       </div>
     </div>
-
-    <div class="skill-card reveal" data-target-pct="68">
-      <div class="skill-icon">🗄️</div>
-      <div class="skill-name">Core Fundamentals</div>
-      <div class="skill-desc">Data Structures &amp; Algorithms (DSA), Object-Oriented Programming (OOP), Database Management Systems (DBMS), LeetCode problem solving.</div>
-      <div class="skill-bar"><div class="skill-fill" style="--w:0.68"></div></div>
-      <div class="skill-meta">
-        <span class="skill-level">Advanced</span>
-        <span class="skill-pct-badge"><span class="pct-val">0</span>%</span>
-      </div>
-    </div>
-
-    <div class="skill-card reveal reveal-delay-1" data-target-pct="94">
-      <div class="skill-icon">🧱</div>
-      <div class="skill-name">Systems &amp; Game Architecture</div>
-      <div class="skill-desc">Paper/Spigot Java API, Demand Balancer ShopGUI, event pipelines, player state handling, server moderation, and Linux hosting.</div>
-      <div class="skill-bar"><div class="skill-fill" style="--w:0.94"></div></div>
-      <div class="skill-meta">
-        <span class="skill-level">Advanced Systems</span>
-        <span class="skill-pct-badge skill-pct-mc"><span class="pct-val">0</span>%</span>
-      </div>
-    </div>
-
-    <div class="skill-card reveal reveal-delay-2" data-target-pct="66">
-      <div class="skill-icon">🔧</div>
-      <div class="skill-name">Tools &amp; Version Control</div>
-      <div class="skill-desc">Git, GitHub, Linux CLI, Bash, unit testing, Postman, and collaborative engineering workflows.</div>
-      <div class="skill-bar"><div class="skill-fill" style="--w:0.66"></div></div>
-      <div class="skill-meta">
-        <span class="skill-level">Proficient</span>
-        <span class="skill-pct-badge"><span class="pct-val">0</span>%</span>
-      </div>
-    </div>
-
   </div>
 </section>
 
@@ -2949,50 +3237,88 @@
 
 <!-- EXPERIENCE / EDUCATION -->
 <section id="experience">
-  <div class="section-label">Journey</div>
-  <h2 class="section-title reveal">My <em>Timeline</em></h2>
-  <div class="timeline">
+  <div class="section-label">Trajectory &amp; Milestones</div>
+  <h2 class="section-title reveal">Experience &amp; <em>Education</em></h2>
 
-    <div class="timeline-item reveal">
-      <div class="timeline-dot"></div>
-      <div class="timeline-period">Jan 2026 — Jul 2026</div>
-      <div class="timeline-role">Software Intern</div>
-      <div class="timeline-org">Akanksha Charitable Trust &mdash; Codex Learning Platform Backend</div>
-      <div class="timeline-desc">Implemented JWT authentication improvements including validation for tampered and invalid tokens. Designed and built an FCM notification service with an in-process scheduler for streak reminders. Extended user models with configurable notification preferences and contributed unit tests and Firestore indexing optimizations.</div>
+  <div class="timeline-two-col">
+    <!-- Left Column: Industry & Leadership -->
+    <div class="timeline-col reveal">
+      <div class="timeline-col-header">💼 Industry &amp; Leadership</div>
+      <div class="timeline-col-list">
+        
+        <div class="timeline-block">
+          <div class="timeline-block-period">Jan 2026 – Jul 2026</div>
+          <div class="timeline-block-role">Software Intern</div>
+          <div class="timeline-block-org">Akanksha Charitable Trust — Codex Learning Platform</div>
+          <div class="timeline-block-desc">
+            Implemented hardened JWT authentication interceptors for invalid/tampered token rejection. Built an in-process scheduler powering Firebase Cloud Messaging (FCM) streak reminders, with Firestore query indexing and unit tests.
+          </div>
+        </div>
+
+        <div class="timeline-block">
+          <div class="timeline-block-period">2022 – 2025</div>
+          <div class="timeline-block-role">Creative Head</div>
+          <div class="timeline-block-org">WeMod (Atlantis Corporation)</div>
+          <div class="timeline-block-desc">
+            Led creative planning and asset production across gaming creator initiatives, including projects with MrGamerJay and Mineplex communities. Managed cross-functional schedules and external creator partner deliverables.
+          </div>
+        </div>
+
+        <div class="timeline-block">
+          <div class="timeline-block-period">Mar 2025 – Present</div>
+          <div class="timeline-block-role">Administrator</div>
+          <div class="timeline-block-org">MGU.One Minecraft Server</div>
+          <div class="timeline-block-desc">
+            Direct server administration, automated configuration backups, player moderation workflows, and community incident management.
+          </div>
+        </div>
+
+        <div class="timeline-block">
+          <div class="timeline-block-period">Active Member</div>
+          <div class="timeline-block-role">Club Member</div>
+          <div class="timeline-block-org">CoRE Club — VCET</div>
+          <div class="timeline-block-desc">
+            Active participant in college engineering club tech talks, hackathons, and collaborative student software projects.
+          </div>
+        </div>
+
+      </div>
     </div>
 
-    <div class="timeline-item reveal reveal-delay-1">
-      <div class="timeline-dot"></div>
-      <div class="timeline-period">2023 — Expected 2028</div>
-      <div class="timeline-role">B.E. Computer Science Engineering (3rd Year, Sem 5)</div>
-      <div class="timeline-org">Vivekananda College of Engineering and Technology (VCET, VTU) · CGPA: 7.4</div>
-      <div class="timeline-desc">Core coursework in Data Structures &amp; Algorithms, Object-Oriented Programming, Database Management Systems, and Computer Networks. Active member of CoRE Club VCET.</div>
-    </div>
+    <!-- Right Column: Education & Technical Milestones -->
+    <div class="timeline-col reveal reveal-delay-1">
+      <div class="timeline-col-header">🎓 Education &amp; Achievements</div>
+      <div class="timeline-col-list">
 
-    <div class="timeline-item reveal reveal-delay-2">
-      <div class="timeline-dot"></div>
-      <div class="timeline-period">Mar 2025 — Present</div>
-      <div class="timeline-role">Administrator</div>
-      <div class="timeline-org">MGU.One Minecraft Server</div>
-      <div class="timeline-desc">Administer ongoing server operations, community moderation, user support, and infrastructure workflows while coordinating server rules and technical integrations.</div>
-    </div>
+        <div class="timeline-block">
+          <div class="timeline-block-period">2023 – Expected 2028</div>
+          <div class="timeline-block-role">B.E. Computer Science Engineering (3rd Year, Sem 5)</div>
+          <div class="timeline-block-org">VCET Puttur (Affiliated with VTU) · CGPA: 7.4 / 10.0</div>
+          <div class="timeline-block-desc">
+            Rigorous coursework in Data Structures, Algorithms, Object-Oriented Programming, Database Management Systems, and Computer Networks.
+          </div>
+        </div>
 
-    <div class="timeline-item reveal reveal-delay-3">
-      <div class="timeline-dot"></div>
-      <div class="timeline-period">2022 — 2025</div>
-      <div class="timeline-role">Creative Head</div>
-      <div class="timeline-org">WeMod (Atlantis Corporation)</div>
-      <div class="timeline-desc">Led creative planning and asset production across gaming and YouTube creator initiatives (MrGamerJay, Mineplex). Coordinated cross-functional deliverables, creator specifications, and end-to-end partner communications.</div>
-    </div>
+        <div class="timeline-block">
+          <div class="timeline-block-period">Competitive Programming</div>
+          <div class="timeline-block-role">IEEE Xtreme &amp; Algorithmic Problem Solving</div>
+          <div class="timeline-block-org">IEEE Student Branch &amp; LeetCode</div>
+          <div class="timeline-block-desc">
+            Participated in the international 24-hour IEEE Xtreme competitive programming marathon. Solved ~50 algorithmic challenges on LeetCode covering arrays, hash maps, and recursion.
+          </div>
+        </div>
 
-    <div class="timeline-item reveal">
-      <div class="timeline-dot"></div>
-      <div class="timeline-period">Certifications &amp; Competitions</div>
-      <div class="timeline-role">Technical Activities</div>
-      <div class="timeline-org">IEEE Xtreme · LeetCode · MICE · NITK Surathkal</div>
-      <div class="timeline-desc">Participated in IEEE Xtreme Competitive Programming, solved 50+ LeetCode algorithmic problems, earned Python Programming Certificate (MICE Institute), and attended Entrepreneurship Workshop at NITK Surathkal.</div>
-    </div>
+        <div class="timeline-block">
+          <div class="timeline-block-period">Certifications &amp; Workshops</div>
+          <div class="timeline-block-role">Python Programming &amp; Entrepreneurship</div>
+          <div class="timeline-block-org">MICE Institute &amp; NITK Surathkal</div>
+          <div class="timeline-block-desc">
+            Completed Certified Python Programming credential (MICE). Participated in the intensive Entrepreneurship and Venture Incubation Workshop at NITK Surathkal.
+          </div>
+        </div>
 
+      </div>
+    </div>
   </div>
 </section>
 
@@ -3007,10 +3333,7 @@
         <span class="contact-link-icon">✉️</span>
         <div><span class="contact-link-label">Email</span>jnaneshsharmah@gmail.com</div>
       </a>
-      <a href="tel:+917994655828" class="contact-link">
-        <span class="contact-link-icon">📞</span>
-        <div><span class="contact-link-label">Phone</span>+91 7994655828</div>
-      </a>
+      
       <a href="https://github.com/Jnanesh321" target="_blank" class="contact-link">
         <span class="contact-link-icon">🐙</span>
         <div><span class="contact-link-label">GitHub</span>github.com/Jnanesh321</div>
@@ -3062,7 +3385,7 @@
 </footer>
 
 <!-- PROJECT DEEP-DIVE MODAL (Express API Powered) -->
-<div class="modal-backdrop" id="project-modal-backdrop" role="dialog" aria-modal="true">
+<div class="modal-backdrop" id="project-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-project-title">
   <div class="modal-container" id="project-modal-content">
     <button class="modal-close-btn" id="modal-close-btn" aria-label="Close modal">✕</button>
     <div id="modal-inner-content">
@@ -3151,7 +3474,7 @@ typewrite();
 const heroSubLines = [
   { id: 'type-line-1', text: 'CS Engineering Student · VCET (VTU) · 3rd Year' },
   { id: 'type-line-2', text: 'Backend Dev · Node.js & Express · Distributed & Community Systems' },
-  { id: 'type-line-3', text: 'India 🇮🇳 · Building scalable backends & robust systems' }
+  { id: 'type-line-3', text: 'India <span class="flag-icon-wrap" title="India" aria-label="India"><svg width="18" height="12" viewBox="0 0 18 12" style="vertical-align:middle;border-radius:2px;display:inline-block;margin:0 4px;"><rect width="18" height="4" fill="#FF9933"/><rect y="4" width="18" height="4" fill="#FFFFFF"/><rect y="8" width="18" height="4" fill="#138808"/><circle cx="9" cy="6" r="1.5" fill="#000080"/></svg></span> · Building scalable backends & robust systems' }
 ];
 
 function initHeroSubtypewriter() {
@@ -3305,7 +3628,7 @@ function executeTermCommand(rawCmd) {
         &nbsp;&nbsp;<span class="term-key">"role"</span>: <span class="term-str">"Backend &amp; Systems Engineer"</span>,<br>
         &nbsp;&nbsp;<span class="term-key">"education"</span>: <span class="term-str">"VCET (VTU) · 3rd Year · B.E. CS"</span>,<br>
         &nbsp;&nbsp;<span class="term-key">"cgpa"</span>: <span class="term-num">7.4</span>,<br>
-        &nbsp;&nbsp;<span class="term-key">"location"</span>: <span class="term-str">"India 🇮🇳"</span>,<br>
+        &nbsp;&nbsp;<span class="term-key">"location"</span>: <span class="term-str">"India <span class="flag-icon-wrap" title="India" aria-label="India"><svg width="18" height="12" viewBox="0 0 18 12" style="vertical-align:middle;border-radius:2px;display:inline-block;margin:0 4px;"><rect width="18" height="4" fill="#FF9933"/><rect y="4" width="18" height="4" fill="#FFFFFF"/><rect y="8" width="18" height="4" fill="#138808"/><circle cx="9" cy="6" r="1.5" fill="#000080"/></svg></span>"</span>,<br>
         &nbsp;&nbsp;<span class="term-key">"focus"</span>: <span class="term-str">"Scalable APIs, Distributed &amp; Community Systems"</span>,<br>
         &nbsp;&nbsp;<span class="term-key">"status"</span>: <span class="term-accent">"Actively open for Software Internships"</span><br>
         <span class="term-brace">}</span>
@@ -3357,9 +3680,9 @@ function executeTermCommand(rawCmd) {
       <div class="term-success">📫 Direct Contact Channels:</div>
       <div style="margin-top:4px;line-height:1.6;">
         <div>📧 <strong>Email:</strong> <a href="mailto:jnaneshsharmah@gmail.com" style="color:var(--accent);">jnaneshsharmah@gmail.com</a></div>
-        <div>📞 <strong>Phone:</strong> <a href="tel:+917994655828" style="color:var(--accent);">+91 7994655828</a></div>
+        
         <div>🐙 <strong>GitHub:</strong> <a href="https://github.com/Jnanesh321" target="_blank" style="color:var(--accent);">github.com/Jnanesh321</a></div>
-        <div>📍 <strong>Location:</strong> India 🇮🇳</div>
+        <div>📍 <strong>Location:</strong> India <span class="flag-icon-wrap" title="India" aria-label="India"><svg width="18" height="12" viewBox="0 0 18 12" style="vertical-align:middle;border-radius:2px;display:inline-block;margin:0 4px;"><rect width="18" height="4" fill="#FF9933"/><rect y="4" width="18" height="4" fill="#FFFFFF"/><rect y="8" width="18" height="4" fill="#138808"/><circle cx="9" cy="6" r="1.5" fill="#000080"/></svg></span></div>
       </div>
     `;
   } else if (lower === 'github' || lower === 'gh') {
@@ -3750,7 +4073,7 @@ function showBanter(message, modeLabel) {
 function updateTorchThemeUI(showSpeech = false) {
   if (!torchBtn) return;
   const currentStyle = document.documentElement.getAttribute('data-theme-style') || 'default';
-  const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+  const currentTheme = document.documentElement.getAttribute('data-color-scheme') || 'dark';
   const cfg = themeTorchConfig[currentStyle] || themeTorchConfig['default'];
   const isLight = (currentTheme === 'light');
 
@@ -3788,18 +4111,21 @@ function updateTorchThemeUI(showSpeech = false) {
 }
 
 function initTorch() {
-  const savedTheme = localStorage.getItem('jnanesh-portfolio-theme') || 'dark';
-  applyTheme(savedTheme, false);
+  const savedMode = localStorage.getItem('jnanesh-portfolio-color-scheme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+  applyColorMode(savedMode, false);
 
-  torchBtn.addEventListener('click', () => {
-    const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
-    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-    applyTheme(newTheme, true);
-  });
+  if (torchBtn) {
+    torchBtn.addEventListener('click', () => {
+      const currentMode = document.documentElement.getAttribute('data-color-scheme') || 'dark';
+      const newMode = currentMode === 'light' ? 'dark' : 'light';
+      applyColorMode(newMode, true);
+    });
+  }
+});
 
   torchBtn.addEventListener('mouseenter', () => {
     const currentStyle = document.documentElement.getAttribute('data-theme-style') || 'default';
-    const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+    const currentTheme = document.documentElement.getAttribute('data-color-scheme') || 'dark';
     const cfg = themeTorchConfig[currentStyle] || themeTorchConfig['default'];
     if (!torchBanter.classList.contains('show')) {
       if (currentTheme === 'dark') {
@@ -3811,9 +4137,10 @@ function initTorch() {
   });
 }
 
-function applyTheme(theme, showSpeech) {
-  document.documentElement.setAttribute('data-theme', theme);
-  localStorage.setItem('jnanesh-portfolio-theme', theme);
+function applyColorMode(mode, showSpeech) {
+  document.documentElement.setAttribute('data-color-scheme', mode);
+  document.documentElement.setAttribute('data-theme-mode', mode);
+  localStorage.setItem('jnanesh-portfolio-color-scheme', mode);
   updateTorchThemeUI(showSpeech);
 }
 initTorch();
@@ -4189,5 +4516,6 @@ if (creeper) {
 <!-- Minecraft Theme Retro VFX & Tactile Engine -->
 <script src="/assets/themes/minecraft/minecraft-vfx.js"></script>
 <script src="/assets/themes/minecraft/minecraft-experience.js"></script>
+<script src="/js/theme-registry.js"></script>
 </body>
 </html>

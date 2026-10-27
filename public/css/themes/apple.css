@@ -1,0 +1,213 @@
+/**
+ * ══════════════════════════════════════════════════════════════════
+ * APPLE GLASS THEME (apple.css)
+ * Frosted Glassmorphism, SF-Style Typography, Bento-Grid Structure,
+ * Specular 1px Inner Highlights, Soft Shadows, Spring Physics.
+ * Scoped strictly to [data-theme="apple"]
+ * ══════════════════════════════════════════════════════════════════
+ */
+
+[data-theme="apple"] {
+  /* ── Token Overrides ── */
+  --color-bg: #000000;
+  --color-bg-alt: #0a0a0c;
+  --color-surface: rgba(28, 28, 30, 0.65);
+  --color-surface-hover: rgba(44, 44, 46, 0.75);
+  --color-surface-active: rgba(58, 58, 60, 0.85);
+  --color-border: rgba(255, 255, 255, 0.12);
+  --color-border-hover: rgba(255, 255, 255, 0.28);
+  --color-border-subtle: rgba(255, 255, 255, 0.06);
+
+  --color-text: #f5f5f7;
+  --color-text-muted: #86868b;
+  --color-text-inverse: #000000;
+
+  --color-accent: #2997ff;
+  --color-accent-hover: #0077ed;
+  --color-accent2: #a855f7;
+  --color-accent-subtle: rgba(41, 151, 255, 0.12);
+  --color-accent-glow: rgba(41, 151, 255, 0.3);
+
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;
+  --font-heading: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;
+  --letter-spacing-tight: -0.025em;
+
+  --radius-xs: 8px;
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 26px;
+  --radius-xl: 32px;
+  --radius-pill: 9999px;
+
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 12px 36px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.55);
+  --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.18), inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: all 0.3s var(--ease-spring);
+}
+
+/* ── Light Variant ── */
+[data-theme="apple"][data-theme-mode="light"],
+[data-theme="apple"].light-mode {
+  --color-bg: #f5f5f7;
+  --color-bg-alt: #ffffff;
+  --color-surface: rgba(255, 255, 255, 0.72);
+  --color-surface-hover: rgba(255, 255, 255, 0.88);
+  --color-border: rgba(0, 0, 0, 0.08);
+  --color-border-hover: rgba(0, 0, 0, 0.2);
+  --color-text: #1d1d1f;
+  --color-text-muted: #6e6e73;
+  --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.9), inset 0 0 0 1px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.08);
+}
+
+/* ── General Glass Components ── */
+[data-theme="apple"] body {
+  background-color: var(--color-bg);
+  background-image: 
+    radial-gradient(circle at 15% 15%, rgba(41, 151, 255, 0.08) 0%, transparent 45%),
+    radial-gradient(circle at 85% 85%, rgba(168, 85, 247, 0.06) 0%, transparent 45%);
+  font-family: var(--font-sans);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+/* ── Floating Island Pill Navigation ── */
+[data-theme="apple"] nav {
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(92%, 1080px);
+  border-radius: var(--radius-pill);
+  background: rgba(24, 24, 26, 0.75);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4), var(--glass-highlight);
+  padding: 0.85rem 1.8rem;
+  transition: all 0.3s var(--ease-spring);
+}
+
+/* Fallback for browsers without backdrop-filter */
+@supports not (backdrop-filter: blur(20px)) {
+  [data-theme="apple"] nav,
+  [data-theme="apple"] .project-card,
+  [data-theme="apple"] .skill-card,
+  [data-theme="apple"] .stat-card,
+  [data-theme="apple"] .about-frame {
+    background: #1c1c1e !important;
+  }
+}
+
+/* ── Bento-Grid Project Cards ── */
+[data-theme="apple"] .projects-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.5rem;
+}
+
+[data-theme="apple"] .project-card {
+  grid-column: span 6;
+  background: var(--color-surface);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm), var(--glass-highlight);
+  padding: 2.2rem 2rem;
+  transition: transform 0.35s var(--ease-spring), box-shadow 0.35s var(--ease-spring), border-color 0.25s ease;
+}
+
+[data-theme="apple"] .project-card.featured {
+  grid-column: span 12;
+  background: linear-gradient(135deg, rgba(35, 35, 42, 0.7) 0%, rgba(20, 20, 24, 0.8) 100%);
+}
+
+[data-theme="apple"] .project-card:hover {
+  transform: translateY(-5px) scale(1.01);
+  box-shadow: var(--shadow-md), var(--glass-highlight), 0 0 24px rgba(41, 151, 255, 0.15);
+  border-color: var(--color-border-hover);
+}
+
+[data-theme="apple"] .project-title {
+  font-size: 1.45rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--color-text);
+}
+
+/* ── Apple-Style Bento Metric Cards ── */
+[data-theme="apple"] .stat-card {
+  background: var(--color-surface);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--glass-highlight);
+  padding: 1.4rem 1.2rem;
+}
+
+[data-theme="apple"] .stat-card .stat-num {
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  background: linear-gradient(180deg, #ffffff 0%, #a1a1aa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ── Buttons & Action Elements ── */
+[data-theme="apple"] .btn {
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.75rem 1.6rem;
+  letter-spacing: -0.01em;
+  transition: all 0.25s var(--ease-spring);
+}
+
+[data-theme="apple"] .btn-primary {
+  background: #ffffff;
+  color: #000000 !important;
+  border: none;
+  box-shadow: 0 4px 14px rgba(255, 255, 255, 0.25);
+}
+
+[data-theme="apple"] .btn-primary:hover {
+  background: #f0f0f2;
+  transform: scale(1.03);
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.35);
+}
+
+[data-theme="apple"] .btn-ghost {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--color-text) !important;
+}
+
+[data-theme="apple"] .btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(1.03);
+}
+
+[data-theme="apple"] .tech-pill {
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #d1d5db;
+  font-weight: 500;
+  font-size: 0.78rem;
+  padding: 0.3rem 0.8rem;
+}
+
+@media (max-width: 900px) {
+  [data-theme="apple"] .projects-grid {
+    grid-template-columns: 1fr;
+  }
+  [data-theme="apple"] .project-card,
+  [data-theme="apple"] .project-card.featured {
+    grid-column: span 1;
+  }
+}

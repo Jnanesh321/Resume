@@ -1,0 +1,292 @@
+/**
+ * ══════════════════════════════════════════════════════════════════
+ * NETFLIX CINEMATIC THEME (netflix.css)
+ * Pitch-Dark Canvas (#141414), N-Red Accent (#E50914), Billboard Hero
+ * with Gradient Scrim, Horizontal Thumbnail Carousels, Hover-Expand
+ * Preview Scaling, and "Who's Watching?" Profile Selector.
+ * Scoped strictly to [data-theme="netflix"]
+ * ══════════════════════════════════════════════════════════════════
+ */
+
+[data-theme="netflix"] {
+  --color-bg: #141414;
+  --color-bg-alt: #181818;
+  --color-surface: #1f1f1f;
+  --color-surface-hover: #282828;
+  --color-surface-active: #333333;
+  --color-border: #2a2a2a;
+  --color-border-hover: #e50914;
+  --color-border-subtle: #1c1c1c;
+
+  --color-text: #ffffff;
+  --color-text-muted: #a3a3a3;
+  --color-text-inverse: #141414;
+
+  --color-accent: #e50914;
+  --color-accent-hover: #b80710;
+  --color-accent2: #f5f5f1;
+  --color-accent-subtle: rgba(229, 9, 20, 0.15);
+  --color-accent-glow: rgba(229, 9, 20, 0.4);
+
+  --font-sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-heading: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-pill: 4px;
+
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.7);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.85);
+}
+
+[data-theme="netflix"] body {
+  background-color: #141414;
+  color: #ffffff;
+}
+
+/* ── Top Navigation Bar (Netflix Red Mark) ── */
+[data-theme="netflix"] nav {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.85) 0%, rgba(20, 20, 20, 0) 100%) !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+  padding: 1.2rem 3rem;
+}
+
+[data-theme="netflix"] .nav-logo {
+  color: #e50914 !important;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  font-size: 1.4rem;
+  text-shadow: 0 2px 8px rgba(229, 9, 20, 0.5);
+}
+
+/* ── Billboard Hero with Cinematic Scrim ── */
+[data-theme="netflix"] #hero {
+  position: relative;
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  background: 
+    linear-gradient(77deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.6) 45%, transparent 85%),
+    linear-gradient(180deg, transparent 65%, #141414 100%),
+    radial-gradient(circle at 75% 30%, rgba(229, 9, 20, 0.18) 0%, transparent 60%);
+  padding: 8rem 4rem 4rem 4rem;
+}
+
+[data-theme="netflix"] .hero-badge {
+  background: rgba(229, 9, 20, 0.2);
+  border: 1px solid #e50914;
+  color: #ffffff;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.75rem;
+}
+
+[data-theme="netflix"] .hero-name {
+  font-size: clamp(2.4rem, 6.5vw, 4.6rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.9);
+}
+
+[data-theme="netflix"] .hero-name .line2 {
+  color: #ffffff !important;
+  -webkit-text-stroke: 0px !important;
+}
+
+/* Netflix CTA Buttons: Play (White) and More Info (Translucent Gray) */
+[data-theme="netflix"] .btn-primary {
+  background: #ffffff !important;
+  color: #000000 !important;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.8rem 2rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 4px;
+}
+
+[data-theme="netflix"] .btn-primary::before {
+  content: '▶';
+  font-size: 1.1rem;
+}
+
+[data-theme="netflix"] .btn-primary:hover {
+  background: rgba(255, 255, 255, 0.75) !important;
+  transform: scale(1.04);
+}
+
+[data-theme="netflix"] .btn-ghost {
+  background: rgba(109, 109, 110, 0.7) !important;
+  color: #ffffff !important;
+  border: none !important;
+  font-weight: 700;
+  padding: 0.8rem 1.8rem;
+  border-radius: 4px;
+}
+
+[data-theme="netflix"] .btn-ghost:hover {
+  background: rgba(109, 109, 110, 0.4) !important;
+  transform: scale(1.04);
+}
+
+/* ── Horizontal Scrolling Carousels (Desktop) ── */
+[data-theme="netflix"] .projects-grid {
+  display: flex;
+  overflow-x: auto;
+  gap: 1.2rem;
+  padding: 1.5rem 0.5rem 3rem 0.5rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+[data-theme="netflix"] .projects-grid::-webkit-scrollbar {
+  height: 6px;
+}
+
+[data-theme="netflix"] .projects-grid::-webkit-scrollbar-thumb {
+  background: #e50914;
+  border-radius: 3px;
+}
+
+[data-theme="netflix"] .project-card {
+  flex: 0 0 clamp(320px, 32vw, 420px);
+  scroll-snap-align: start;
+  background: #181818;
+  border: 1px solid #282828;
+  border-radius: 6px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.8);
+  transition: transform 0.3s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.3s ease, border-color 0.25s ease;
+  position: relative;
+}
+
+[data-theme="netflix"] .project-card:hover {
+  transform: scale(1.05) translateY(-6px);
+  z-index: 10;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.95), 0 0 16px rgba(229, 9, 20, 0.35);
+  border-color: #e50914;
+}
+
+[data-theme="netflix"] .project-num {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #e50914;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+[data-theme="netflix"] .project-title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+[data-theme="netflix"] .tech-pill {
+  border-radius: 2px;
+  background: #2a2a2a;
+  border: 1px solid #3d3d3d;
+  color: #e5e5e5;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+/* ── "Who's Watching?" Profile Selector Modal ── */
+.netflix-profile-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: #141414;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.netflix-profile-modal.open {
+  display: flex;
+}
+
+.netflix-profile-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+}
+
+.netflix-profiles-row {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.netflix-profile-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  color: #808080;
+  font-size: 1.1rem;
+  transition: all 0.2s ease;
+}
+
+.netflix-profile-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.8rem;
+  border: 3px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.netflix-profile-card:hover .netflix-profile-avatar,
+.netflix-profile-card:focus .netflix-profile-avatar {
+  border-color: #ffffff;
+  transform: scale(1.05);
+}
+
+.netflix-profile-card:hover,
+.netflix-profile-card:focus {
+  color: #ffffff;
+}
+
+.netflix-profile-skip {
+  background: transparent;
+  border: 1px solid #808080;
+  color: #808080;
+  font-size: 0.95rem;
+  padding: 0.5rem 1.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.netflix-profile-skip:hover {
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+/* Degrade to vertical stack on mobile */
+@media (max-width: 768px) {
+  [data-theme="netflix"] .projects-grid {
+    flex-direction: column;
+    overflow-x: visible;
+  }
+  [data-theme="netflix"] .project-card {
+    flex: 1 1 auto;
+  }
+}
