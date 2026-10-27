@@ -1,33 +1,34 @@
 /**
  * ══════════════════════════════════════════════════════════════════
  * MINECRAFT DIET THEME (minecraft.css)
- * Streamlined 8-bit aesthetic: Press Start 2P headings, crisp readable
- * monospace body, tactile 3D pixel bevels, dynamic scroll XP bar,
- * mobile-safe collapsible hotbar, muted-by-default audio, and
- * reduced-motion compliance.
  * Scoped strictly to [data-theme="minecraft"]
+ * Principles:
+ * - Content readability first: Headings use Press Start 2P; body copy uses readable monospace.
+ * - Beveled cards and buttons: Pure static CSS with 1-frame active press state.
+ * - Static background: Low-contrast dark stone grid. Zero ambient movement.
+ * - Gated by data-fx="off|low|full" (Default: "low").
  * ══════════════════════════════════════════════════════════════════
  */
 
 [data-theme="minecraft"] {
-  --color-bg: #0e140e;
-  --color-bg-alt: #131c13;
-  --color-surface: #182418;
-  --color-surface-hover: #1f301f;
-  --color-surface-active: #273d27;
-  --color-border: #3f8e3f;
+  --color-bg: #0c120c;
+  --color-bg-alt: #111a11;
+  --color-surface: #152215;
+  --color-surface-hover: #1c2e1c;
+  --color-surface-active: #233a23;
+  --color-border: #2e5a2e;
   --color-border-hover: #4ade80;
-  --color-border-subtle: #244624;
+  --color-border-subtle: #1c331c;
 
   --color-text: #f0fdf4;
   --color-text-muted: #86efac;
-  --color-text-inverse: #0d120d;
+  --color-text-inverse: #0c120c;
 
   --color-accent: #2cf5d6;
   --color-accent-hover: #14b8a6;
   --color-accent2: #4ade80;
-  --color-accent-subtle: rgba(44, 245, 214, 0.12);
-  --color-accent-glow: rgba(44, 245, 214, 0.4);
+  --color-accent-subtle: rgba(44, 245, 214, 0.1);
+  --color-accent-glow: rgba(44, 245, 214, 0.25);
 
   --font-heading: 'Press Start 2P', monospace;
   --font-mono: 'Space Mono', Consolas, monospace;
@@ -38,112 +39,138 @@
   --radius-lg: 0px;
   --radius-pill: 0px;
 
-  --shadow-sm: inset -2px -2px 0 #142a14, inset 2px 2px 0 #6ee7b7, 0 3px 0 #062406;
-  --shadow-md: inset -3px -3px 0 #142a14, inset 3px 3px 0 #6ee7b7, 0 6px 0 #062406;
+  --shadow-sm: inset -2px -2px 0 #0e1a0e, inset 2px 2px 0 #4a7c4a, 0 2px 0 #060e06;
+  --shadow-md: inset -3px -3px 0 #0e1a0e, inset 3px 3px 0 #4a7c4a, 0 4px 0 #060e06;
 }
 
+/* ── Static Background (Subtle Dark Stone Grid, Zero Animation) ── */
 [data-theme="minecraft"] body {
-  background-color: #0e140e;
+  background-color: #0c120c;
   background-image:
-    linear-gradient(rgba(44, 245, 214, 0.04) 2px, transparent 2px),
-    linear-gradient(90deg, rgba(44, 245, 214, 0.04) 2px, transparent 2px);
-  background-size: 32px 32px;
-  cursor: url('/assets/cursors/minecraft-sword.svg') 2 2, auto !important;
+    linear-gradient(rgba(44, 245, 214, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(44, 245, 214, 0.03) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
-[data-theme="minecraft"] a,
-[data-theme="minecraft"] button,
-[data-theme="minecraft"] .project-card {
-  cursor: url('/assets/cursors/minecraft-sword.svg') 2 2, pointer !important;
-}
-
-/* ── Typography Scoping (Headings in pixel, body text readable) ── */
+/* ── Typography: Headings ONLY in Press Start 2P ── */
 [data-theme="minecraft"] .nav-logo,
 [data-theme="minecraft"] .section-title,
 [data-theme="minecraft"] .hero-name,
 [data-theme="minecraft"] .project-title,
 [data-theme="minecraft"] .modal-title,
-[data-theme="minecraft"] .section-label {
+[data-theme="minecraft"] .section-label,
+[data-theme="minecraft"] .tier-title {
   font-family: 'Press Start 2P', monospace !important;
 }
 
 [data-theme="minecraft"] .hero-name {
-  font-size: clamp(1.3rem, 3.8vw, 2.4rem) !important;
+  font-size: clamp(1.25rem, 3.6vw, 2.3rem) !important;
   line-height: 1.4 !important;
-  text-shadow: 3px 3px 0 #064e3b, 5px 5px 0 #022c22 !important;
+  text-shadow: 2px 2px 0 #064e3b, 4px 4px 0 #022c22 !important;
   letter-spacing: -0.01em;
 }
 
 [data-theme="minecraft"] .section-title {
-  font-size: clamp(1rem, 2.5vw, 1.4rem) !important;
+  font-size: clamp(0.95rem, 2.2vw, 1.35rem) !important;
   line-height: 1.5 !important;
 }
 
 [data-theme="minecraft"] .project-title {
-  font-size: 0.82rem !important;
-  line-height: 1.6 !important;
+  font-size: 0.8rem !important;
+  line-height: 1.5 !important;
 }
 
-/* Ensure paragraph body copy remains high-readability */
+/* ── Body Copy: High-Readability Monospace Font ── */
 [data-theme="minecraft"] p,
 [data-theme="minecraft"] .project-desc,
-[data-theme="minecraft"] .timeline-desc {
+[data-theme="minecraft"] .timeline-block-desc,
+[data-theme="minecraft"] .tier-desc,
+[data-theme="minecraft"] .contact-desc {
   font-family: var(--font-mono);
   font-size: 0.85rem;
   line-height: 1.7;
   color: #d1fae5;
 }
 
-/* ── 3D Bevel Tactile Cards ── */
+/* ── Static Beveled Cards & Buttons (1-Frame Active Press State Only) ── */
 [data-theme="minecraft"] .btn,
 [data-theme="minecraft"] .project-card,
+[data-theme="minecraft"] .skill-tier-card,
 [data-theme="minecraft"] .stat-card,
 [data-theme="minecraft"] .modal-container {
-  border: 3px solid #3f8e3f !important;
-  box-shadow: inset -3px -3px 0 #142a14, inset 3px 3px 0 #6ee7b7, 0 6px 0 #062406 !important;
+  border: 2px solid #2e5a2e !important;
+  box-shadow: inset -2px -2px 0 #0e1a0e, inset 2px 2px 0 #4a7c4a, 0 3px 0 #060e06 !important;
   border-radius: 0px !important;
-  background: #151d15 !important;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  background: #152215 !important;
+  transition: none !important; /* Zero looping motion */
 }
 
+/* Max 2px hover movement */
+[data-theme="minecraft"] .project-card:hover,
+[data-theme="minecraft"] .skill-tier-card:hover {
+  transform: translateY(-2px) !important;
+  border-color: #4ade80 !important;
+}
+
+/* 1-Frame Active Press State */
 [data-theme="minecraft"] .btn:active,
 [data-theme="minecraft"] .project-card:active {
-  transform: translateY(3px) !important;
-  box-shadow: inset 3px 3px 0 #142a14, inset -3px -3px 0 #6ee7b7, 0 3px 0 #062406 !important;
+  transform: translateY(2px) !important;
+  box-shadow: inset 2px 2px 0 #0e1a0e, inset -2px -2px 0 #4a7c4a, 0 1px 0 #060e06 !important;
 }
 
-[data-theme="minecraft"] .tech-pill {
+[data-theme="minecraft"] .tech-pill,
+[data-theme="minecraft"] .tier-skill-pill {
   border-radius: 0px !important;
-  border: 1.5px solid #2cf5d6 !important;
+  border: 1px solid #2cf5d6 !important;
   font-family: 'Press Start 2P', monospace !important;
   font-size: 0.52rem !important;
   padding: 0.35rem 0.55rem !important;
-  background: #102418 !important;
+  background: #0d1a0d !important;
   color: #2cf5d6 !important;
 }
 
-/* ── Streamlined Hotbar & XP Bar (Diet Mode) ── */
-[data-theme="minecraft"] .mc-hud-container {
-  bottom: 10px;
+/* ── Static Splash Text (No Bobbing / No Scaling) ── */
+[data-theme="minecraft"] .mc-hero-splash {
+  display: inline-block;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.58rem;
+  color: #ffff55;
+  text-shadow: 1px 1px 0 #000;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid #ffff55;
+  padding: 3px 8px;
+  margin-top: 8px;
+  animation: none !important;
+  transform: none !important;
 }
 
-/* Default collapsed under 600px to never obscure content */
-@media (max-width: 600px) {
-  [data-theme="minecraft"] .mc-hotbar-wrap {
-    display: none !important;
-  }
-  [data-theme="minecraft"] .mc-hud-container {
-    bottom: 4px !important;
-  }
+/* ── data-fx Level Gating ── */
+html[data-fx="off"] *,
+html[data-fx="off"] *::before,
+html[data-fx="off"] *::after {
+  animation: none !important;
+  transition: none !important;
 }
 
-/* Respect prefers-reduced-motion: disable particle loops & bobbing */
+html[data-fx="off"] #minecraft-vfx-canvas,
+html[data-fx="low"] #minecraft-vfx-canvas {
+  display: none !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  [data-theme="minecraft"] #minecraft-vfx-canvas {
+  #minecraft-vfx-canvas {
     display: none !important;
   }
-  [data-theme="minecraft"] .mc-floating-sword,
-  [data-theme="minecraft"] .mc-hero-splash {
-    animation: none !important;
-  }
+}
+
+/* ── ZERO AMBIENT LOOPS IN DIET MODE (0% IDLE RECALCULATIONS) ── */
+[data-theme="minecraft"] .scroll-line,
+[data-theme="minecraft"] .badge-dot,
+[data-theme="minecraft"] .term-cursor,
+[data-theme="minecraft"] .mc-floating-sword,
+[data-theme="minecraft"] .mc-hero-splash,
+[data-theme="minecraft"] .mc-footer-creeper,
+[data-theme="minecraft"] .torch-active #torch-img {
+  animation: none !important;
 }

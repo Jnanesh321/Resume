@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-fx="low">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -2536,12 +2536,12 @@
   }
 
   html[data-theme-style="minecraft"] .torch-active #torch-img {
-    animation: mcTorchFlicker 1.4s infinite ease-in-out;
+    /* torch animation removed */
   }
 
   html[data-theme-style="minecraft"] .project-card[data-project-id="mgu"] {
     border-color: #2cf5d6 !important;
-    animation: mcRedstonePulse 3.5s infinite ease-in-out;
+    /* redstone pulse removed */
   }
 
   html[data-theme-style="minecraft"] .btn:active,
@@ -2581,7 +2581,7 @@
   }
   html[data-theme-style="minecraft"] .mc-footer-creeper:hover,
   html[data-theme-style="minecraft"] .mc-footer-creeper.hissing {
-    animation: mcCreeperHiss 0.7s infinite alternate ease-in-out;
+    /* creeper hiss removed */
   }
 
 
@@ -2839,6 +2839,49 @@
     .timeline-two-col { grid-template-columns: 1fr; gap: 2.5rem; }
   }
 
+
+  /* ── FX CONTROLLER IN THEME SWITCHER ── */
+  .theme-fx-control-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 10px 4px 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    margin-top: 4px;
+    font-size: 0.72rem;
+    font-family: var(--font-mono, monospace);
+  }
+  .fx-label {
+    color: var(--muted, #94a3b8);
+    font-size: 0.72rem;
+  }
+  .fx-btn-group {
+    display: flex;
+    gap: 4px;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 2px;
+    border-radius: 4px;
+  }
+  .fx-toggle-btn {
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    font-family: var(--font-mono, monospace);
+    font-size: 0.68rem;
+    padding: 2px 7px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .fx-toggle-btn:hover {
+    color: #ffffff;
+  }
+  .fx-toggle-btn.active {
+    background: var(--color-accent, #38bdf8);
+    color: #090d13;
+    font-weight: 700;
+  }
+
 </style>
   <!-- Minecraft Theme Retro VFX & Tactile Engine -->
   <link rel="stylesheet" href="/assets/themes/minecraft/minecraft-experience.css">
@@ -2894,6 +2937,15 @@
             <small>8-Bit Retro · XP Bar</small>
           </span>
         </button>
+      
+        <div class="theme-fx-control-row">
+          <span class="fx-label">VFX Mode:</span>
+          <div class="fx-btn-group" role="radiogroup" aria-label="VFX level">
+            <button type="button" class="fx-toggle-btn" data-fx-target="off" role="radio" aria-checked="false" title="Zero animation (forced by reduced-motion)">Off</button>
+            <button type="button" class="fx-toggle-btn active" data-fx-target="low" role="radio" aria-checked="true" title="Low (Default): Static cards, thin XP bar, 0 ambient loops">Low</button>
+            <button type="button" class="fx-toggle-btn" data-fx-target="full" role="radio" aria-checked="false" title="Full: Max 1 ambient effect, pauses when typing">Full</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -2927,8 +2979,8 @@
     <h1 class="hero-name glitch" data-text="Jnanesh">
       <span>Jnanesh</span><br>
       <span class="line2">Sharma H<span class="accent">.</span></span>
-      <span class="mc-floating-sword" aria-hidden="true"><img src="/assets/themes/minecraft/diamond-sword.svg" alt="Diamond Sword"></span>
-      <span class="mc-hero-splash" id="mc-hero-splash">★ 20.0 TPS Stability! ★</span>
+      
+      <span class="mc-hero-splash static" id="mc-hero-splash">★ Paper 1.21.4 Architecture ★</span>
     </h1>
     <div class="hero-sub hero-terminal-sub" id="hero-typewriter-sub" aria-label="CS Engineering Student VCET VTU 3rd Year. Backend Dev Node.js and Express. India, Building scalable backends and robust systems.">
       <div class="typed-line" id="type-line-1"><span class="comment-slash">//</span> <span class="typed-text"></span></div>
@@ -3407,46 +3459,7 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.12 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// ── Skill bar & Percentage increment animation on scroll ──
-const skillObserver = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if(e.isIntersecting) {
-      const card = e.target;
-      const fill = card.querySelector('.skill-fill');
-      const targetPct = parseInt(card.getAttribute('data-target-pct'), 10) || 70;
-      const pctValElem = card.querySelector('.pct-val');
-
-      if(fill) {
-        setTimeout(() => {
-          fill.style.transform = `scaleX(${targetPct / 100})`;
-        }, 150);
-      }
-
-      if(pctValElem && !card.dataset.animated) {
-        card.dataset.animated = 'true';
-        let start = 0;
-        const duration = 1200;
-        const startTime = performance.now();
-
-        function step(currentTime) {
-          const elapsed = currentTime - startTime;
-          const progress = Math.min(elapsed / duration, 1);
-          const easeOut = 1 - Math.pow(1 - progress, 3);
-          const currentVal = Math.round(start + (targetPct - start) * easeOut);
-          pctValElem.textContent = currentVal;
-
-          if(progress < 1) {
-            requestAnimationFrame(step);
-          } else {
-            pctValElem.textContent = targetPct;
-          }
-        }
-        requestAnimationFrame(step);
-      }
-    }
-  });
-}, { threshold: 0.35 });
-document.querySelectorAll('.skill-card').forEach(c => skillObserver.observe(c));
+// Skill tiers are statically rendered without percentage loops
 
 // ── Typewriter roles ──
 const roles = [
@@ -3458,17 +3471,23 @@ const roles = [
 let ri = 0, ci = 0, deleting = false;
 const tyEl = document.getElementById('typed-role');
 function typewrite() {
+  const fx = document.documentElement.getAttribute('data-fx') || 'low';
+  if (fx !== 'full') {
+    if (tyEl) tyEl.textContent = 'Available for Backend & Systems Internships';
+    return;
+  }
   const word = roles[ri];
   if(!deleting) {
     tyEl.textContent = word.slice(0, ++ci);
-    if(ci === word.length) { deleting = true; setTimeout(typewrite, 1800); return; }
+    if(ci === word.length) { deleting = true; setTimeout(typewrite, 2200); return; }
   } else {
     tyEl.textContent = word.slice(0, --ci);
     if(ci === 0) { deleting = false; ri = (ri+1) % roles.length; }
   }
-  setTimeout(typewrite, deleting ? 45 : 90);
+  setTimeout(typewrite, deleting ? 60 : 120);
 }
 typewrite();
+window.addEventListener('fxLevelChanged', () => typewrite());
 
 // ── Hero Subtitle Multi-Line Terminal Typewriter ──
 const heroSubLines = [
@@ -4426,9 +4445,7 @@ function applyThemeStyle(styleKey, showToast = true) {
 
   if (showToast) {
     const isMinecraft = (styleKey === 'minecraft');
-    if (isMinecraft && typeof cycleMinecraftSplash === 'function') {
-      cycleMinecraftSplash();
-    }
+    
     toastThemeName.textContent = isMinecraft
       ? '⛏️ Minecraft AIBridge: Full Theme Overhaul Active (8-bit typography & 3D pixel shaders)'
       : (themeNamesMap[styleKey] || styleKey);
@@ -4491,12 +4508,7 @@ const MC_SPLASHES = [
   "★ Creeper-proof Architecture! ★"
 ];
 
-function cycleMinecraftSplash() {
-  const el = document.getElementById('mc-hero-splash');
-  if (!el) return;
-  const quote = MC_SPLASHES[Math.floor(Math.random() * MC_SPLASHES.length)];
-  el.textContent = quote;
-}
+
 
 // Creeper hiss easter egg
 const creeper = document.getElementById('mc-footer-creeper');

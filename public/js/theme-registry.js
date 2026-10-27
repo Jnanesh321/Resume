@@ -1,9 +1,9 @@
 /**
  * ══════════════════════════════════════════════════════════════════
- * THEME REGISTRY & ENGINE (theme-registry.js)
+ * THEME REGISTRY & FX CONTROLLER (theme-registry.js)
  * Manages theme registration, lazy-loading stylesheets, keyboard-accessible
  * UI switcher, URL query param (?theme=x), and persistent state.
- * Default theme: "obsidian" (zero extra network load).
+ * Includes data-fx="off|low|full" controller (Default: "low").
  * ══════════════════════════════════════════════════════════════════
  */
 
@@ -11,6 +11,7 @@
   'use strict';
 
   const STORAGE_KEY = 'jnanesh-active-theme';
+  const FX_STORAGE_KEY = 'jnanesh-fx-level';
   const loadedStylesheets = new Map();
 
   const THEMES = [
@@ -74,8 +75,8 @@
       id: 'minecraft',
       label: 'Minecraft AIBridge',
       category: 'Easter Egg',
-      badge: '8-Bit Retro Overhaul',
-      description: 'Secret gamer mode: 8-bit Press Start 2P typography, 3D pixel bevels, XP progress bar, item hotbar, and Web Audio retro synthesizer.',
+      badge: '8-Bit Retro (Diet Mode)',
+      description: 'Minecraft-flavored aesthetic: Press Start 2P headings, static beveled cards, thin scroll XP bar, and single CTA block break.',
       swatch: {
         bg: '#0d120d',
         surface: '#151d15',
@@ -86,14 +87,11 @@
     }
   ];
 
-  /**
-   * Dynamically loads a theme stylesheet with caching and error handling
-   */
   function loadThemeStylesheet(theme) {
     if (!theme.cssPath) return Promise.resolve();
     if (loadedStylesheets.has(theme.id)) return Promise.resolve();
 
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       const link = document.createElement('link');
       link.rel = 'stylesheet';
       link.href = theme.cssPath;
@@ -104,15 +102,12 @@
       };
       link.onerror = () => {
         console.warn(`[ThemeRegistry] Failed to load stylesheet for ${theme.id}: ${theme.cssPath}`);
-        resolve(); // Degrade gracefully to base tokens
+        resolve();
       };
       document.head.appendChild(link);
     });
   }
 
-  /**
-   * Theme Registry Public API
-   */
   const ThemeRegistry = {
     themes: THEMES,
 
@@ -124,32 +119,55 @@
       return document.documentElement.getAttribute('data-theme') || 'obsidian';
     },
 
+    getFxLevel: function () {
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        return 'off';
+      }
+      try {
+        return localStorage.getItem(FX_STORAGE_KEY) || 'low';
+      } catch (e) {
+        return 'low';
+      }
+    },
+
+    setFxLevel: function (level) {
+      const valid = ['off', 'low', 'full'];
+      const targetLevel = valid.includes(level) ? level : 'low';
+      document.documentElement.setAttribute('data-fx', targetLevel);
+      try {
+        localStorage.setItem(FX_STORAGE_KEY, targetLevel);
+      } catch (e) {}
+
+      // Update button UI
+      document.querySelectorAll('.fx-toggle-btn').forEach(b => {
+        const isActive = b.getAttribute('data-fx-target') === targetLevel;
+        b.classList.toggle('active', isActive);
+        b.setAttribute('aria-checked', isActive ? 'true' : 'false');
+      });
+
+      window.dispatchEvent(new CustomEvent('fxLevelChanged', { detail: { level: targetLevel } }));
+      return targetLevel;
+    },
+
     applyTheme: async function (themeId, options = {}) {
       const { persist = true, announce = true } = options;
       const theme = this.getTheme(themeId);
       const root = document.documentElement;
       const prevThemeId = root.getAttribute('data-theme');
 
-      // Lazy load stylesheet if necessary
       if (theme.cssPath) {
         await loadThemeStylesheet(theme);
       }
 
-      // Set attribute on root HTML
       root.setAttribute('data-theme', theme.id);
-      // Retain compatibility with legacy selectors
       root.setAttribute('data-theme-style', theme.id === 'obsidian' ? 'default' : theme.id);
 
-      // Persist in localStorage
       if (persist) {
         try {
           localStorage.setItem(STORAGE_KEY, theme.id);
-        } catch (e) {
-          console.warn('[ThemeRegistry] localStorage write blocked', e);
-        }
+        } catch (e) {}
       }
 
-      // Update URL query param cleanly without reload
       try {
         const url = new URL(window.location.href);
         if (theme.id === 'obsidian') {
@@ -160,15 +178,12 @@
         window.history.replaceState({}, '', url.toString());
       } catch (e) {}
 
-      // Update UI Dropdown / Menu state
       this.updateSwitcherUI(theme.id);
 
-      // Dispatch event for components that have reactive behavior
       window.dispatchEvent(new CustomEvent('themeChanged', {
         detail: { themeId: theme.id, theme, prevThemeId }
       }));
 
-      // Announce toast if requested
       if (announce && options.userInitiated) {
         this.showToast(theme);
       }
@@ -205,7 +220,11 @@
     },
 
     init: function () {
-      // 1. Check URL param ?theme=xyz
+      // 1. Initialize FX Level (Default: "low")
+      const currentFx = this.getFxLevel();
+      this.setFxLevel(currentFx);
+
+      // 2. Initialize Theme
       let initialTheme = 'obsidian';
       try {
         const params = new URLSearchParams(window.location.search);
@@ -213,7 +232,6 @@
         if (urlTheme && THEMES.some(t => t.id === urlTheme)) {
           initialTheme = urlTheme;
         } else {
-          // 2. Check localStorage
           const saved = localStorage.getItem(STORAGE_KEY);
           if (saved && THEMES.some(t => t.id === saved)) {
             initialTheme = saved;
@@ -222,10 +240,10 @@
       } catch (e) {}
 
       this.applyTheme(initialTheme, { persist: false, announce: false });
-      this.bindSwitcherEvents();
+      this.bindEvents();
     },
 
-    bindSwitcherEvents: function () {
+    bindEvents: function () {
       const toggleBtn = document.getElementById('theme-menu-toggle');
       const dropdown = document.getElementById('theme-menu-dropdown');
       if (!toggleBtn || !dropdown) return;
@@ -244,12 +262,10 @@
 
       toggleBtn.addEventListener('click', (e) => {
         e.stopPropagation();
-        const isOpen = dropdown.classList.contains('open');
-        if (isOpen) closeDropdown();
+        if (dropdown.classList.contains('open')) closeDropdown();
         else openDropdown();
       });
 
-      // Item selection
       dropdown.querySelectorAll('.theme-menu-item').forEach(item => {
         item.addEventListener('click', (e) => {
           e.stopPropagation();
@@ -262,7 +278,18 @@
         });
       });
 
-      // Keyboard navigation (ArrowUp, ArrowDown, Home, End, Escape)
+      // FX level toggle buttons
+      dropdown.querySelectorAll('.fx-toggle-btn').forEach(b => {
+        b.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const targetFx = b.getAttribute('data-fx-target');
+          if (targetFx) {
+            this.setFxLevel(targetFx);
+          }
+        });
+      });
+
+      // Keyboard navigation
       dropdown.addEventListener('keydown', (e) => {
         const items = Array.from(dropdown.querySelectorAll('.theme-menu-item:not([disabled])'));
         const currentIndex = items.indexOf(document.activeElement);
@@ -275,12 +302,6 @@
           e.preventDefault();
           const prevIndex = (currentIndex - 1 + items.length) % items.length;
           items[prevIndex].focus();
-        } else if (e.key === 'Home') {
-          e.preventDefault();
-          items[0].focus();
-        } else if (e.key === 'End') {
-          e.preventDefault();
-          items[items.length - 1].focus();
         } else if (e.key === 'Escape') {
           e.preventDefault();
           closeDropdown();
@@ -288,7 +309,6 @@
         }
       });
 
-      // Close on outside click
       document.addEventListener('click', (e) => {
         if (!toggleBtn.contains(e.target) && !dropdown.contains(e.target)) {
           closeDropdown();
@@ -297,10 +317,8 @@
     }
   };
 
-  // Expose globally
   window.ThemeRegistry = ThemeRegistry;
 
-  // Run on DOMContentLoaded or immediately
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => ThemeRegistry.init());
   } else {
