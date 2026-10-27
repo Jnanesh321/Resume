@@ -1,0 +1,162 @@
+/**
+ * ══════════════════════════════════════════════════════════════════
+ * DESIGN TOKENS ARCHITECTURE (tokens.css)
+ * Central design tokens defining typography, color, spacing, radius,
+ * shadows, motion, and blur across all themes.
+ * Themes override these tokens via [data-theme="<theme-id>"].
+ * ══════════════════════════════════════════════════════════════════
+ */
+
+:root {
+  /* ── 1. COLOR TOKENS (Default Obsidian Dark) ── */
+  --color-bg: #090d13;
+  --color-bg-alt: #0d121b;
+  --color-surface: #0f1722;
+  --color-surface-hover: #152233;
+  --color-surface-active: #1a2b40;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-hover: rgba(56, 189, 248, 0.4);
+  --color-border-subtle: rgba(255, 255, 255, 0.04);
+  
+  --color-text: #e8edf3;
+  --color-text-muted: #94a3b8; /* Enhanced WCAG AA contrast */
+  --color-text-inverse: #090d13;
+  
+  --color-accent: #38bdf8;
+  --color-accent-hover: #0ea5e9;
+  --color-accent2: #818cf8;
+  --color-accent-subtle: rgba(56, 189, 248, 0.12);
+  --color-accent-glow: rgba(56, 189, 248, 0.35);
+
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
+
+  /* Focus ring for WCAG 2.1 AA Keyboard Navigation */
+  --focus-ring: 0 0 0 3px rgba(56, 189, 248, 0.55);
+  --focus-outline: 2px solid var(--color-accent);
+
+  /* ── 2. TYPOGRAPHY TOKENS ── */
+  --font-sans: 'Syne', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'Space Mono', SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-heading: 'Syne', sans-serif;
+  --font-pixel: 'Press Start 2P', monospace;
+
+  --font-size-xs: 0.72rem;
+  --font-size-sm: 0.85rem;
+  --font-size-base: 1rem;
+  --font-size-md: 1.15rem;
+  --font-size-lg: 1.4rem;
+  --font-size-xl: 1.85rem;
+  --font-size-2xl: clamp(2rem, 4vw, 2.75rem);
+  --font-size-3xl: clamp(2.5rem, 6vw, 3.8rem);
+  --font-size-hero: clamp(2rem, 5.5vw, 3.8rem);
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-heavy: 800;
+
+  --letter-spacing-tight: -0.02em;
+  --letter-spacing-normal: 0em;
+  --letter-spacing-wide: 0.05em;
+  --letter-spacing-ultrawide: 0.12em;
+
+  /* ── 3. RADIUS TOKENS ── */
+  --radius-none: 0px;
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-pill: 9999px;
+
+  /* ── 4. SPACING TOKENS ── */
+  --space-1: 0.25rem;  /* 4px */
+  --space-2: 0.5rem;   /* 8px */
+  --space-3: 0.75rem;  /* 12px */
+  --space-4: 1rem;     /* 16px */
+  --space-5: 1.25rem;  /* 20px */
+  --space-6: 1.5rem;   /* 24px */
+  --space-8: 2rem;     /* 32px */
+  --space-10: 2.5rem;  /* 40px */
+  --space-12: 3rem;    /* 48px */
+  --space-16: 4rem;    /* 64px */
+  --space-20: 5rem;    /* 80px */
+
+  /* ── 5. SHADOW & GLOW TOKENS ── */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.6);
+  --shadow-glow: 0 0 20px var(--color-accent-glow);
+  --shadow-card-hover: 0 14px 34px rgba(0, 0, 0, 0.55), 0 0 1px var(--color-accent);
+
+  /* ── 6. MOTION & TRANSITION TOKENS ── */
+  --duration-fast: 0.15s;
+  --duration-normal: 0.25s;
+  --duration-slow: 0.45s;
+
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  --transition-fast: all var(--duration-fast) var(--ease-standard);
+  --transition-normal: all var(--duration-normal) var(--ease-standard);
+  --transition-spring: transform var(--duration-normal) var(--ease-spring), box-shadow var(--duration-normal) var(--ease-standard);
+
+  /* ── 7. BLUR & FROSTED GLASS TOKENS ── */
+  --blur-none: 0px;
+  --blur-sm: 8px;
+  --blur-md: 16px;
+  --blur-lg: 24px;
+  --backdrop-blur: blur(20px);
+  --glass-bg: rgba(15, 23, 34, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+
+  /* ── 8. COMPONENT LAYOUT SIZES ── */
+  --nav-height: 72px;
+  --container-max: 1200px;
+}
+
+/* ── Light Mode Token Overrides for Obsidian ── */
+[data-theme="light"],
+[data-theme-style="default"][data-theme="light"] {
+  --color-bg: #f8fafc;
+  --color-bg-alt: #f1f5f9;
+  --color-surface: #ffffff;
+  --color-surface-hover: #f1f5f9;
+  --color-surface-active: #e2e8f0;
+  --color-border: rgba(15, 23, 42, 0.12);
+  --color-border-hover: rgba(2, 132, 199, 0.5);
+  --color-border-subtle: rgba(15, 23, 42, 0.06);
+
+  --color-text: #0f172a;
+  --color-text-muted: #475569;
+  --color-text-inverse: #ffffff;
+
+  --color-accent: #0284c7;
+  --color-accent-hover: #0369a1;
+  --color-accent2: #6366f1;
+  --color-accent-subtle: rgba(2, 132, 199, 0.1);
+  --color-accent-glow: rgba(2, 132, 199, 0.25);
+
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(15, 23, 42, 0.1);
+  --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.08);
+  --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.12);
+  --shadow-lg: 0 16px 40px rgba(15, 23, 42, 0.16);
+}
+
+/* ── Accessibility: Respect prefers-reduced-motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

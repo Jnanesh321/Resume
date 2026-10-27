@@ -166,12 +166,12 @@ async function dispatchDailyStreakReminder(userId) {
     highlights: [
       'Real-Time Inventory: Atomic checkout updates decrementing available copies and preventing race-condition over-borrowing.',
       'Dynamic Overdue Matrix: Date-differential middleware calculating late fees based on loan durations.',
-      'Compound MongoDB Indices: Text indexing across book titles, ISBNs, and author catalog records for sub-15ms queries.',
+      'Compound MongoDB Indices: Text indexing across book titles, ISBNs, and author catalog records for catalog queries.',
       'Role-Based Access: Dedicated administrative dashboards for librarians and reader checkouts.'
     ],
     metrics: [
       { label: 'Stack Architecture', value: 'MERN Stack' },
-      { label: 'Index Latency', value: '<15ms' },
+      { label: 'Index Latency', value: 'TODO(verify)' },
       { label: 'API Pattern', value: 'RESTful MVC' }
     ],
     architecture: [
