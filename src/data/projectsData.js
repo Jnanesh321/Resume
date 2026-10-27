@@ -282,9 +282,15 @@ router.post('/session', async (req, res) => {
     minecraftAssets: [
       { name: 'Grass Block', icon: '/assets/themes/minecraft/grass-block.svg' },
       { name: 'Diamond Sword', icon: '/assets/themes/minecraft/diamond-sword.svg' },
-      { name: 'Creeper Face', icon: '/assets/themes/minecraft/creeper.svg' },
+      { name: 'Enchanted Book', icon: '/assets/themes/minecraft/enchanted-book.svg' },
+      { name: 'Golden Apple', icon: '/assets/themes/minecraft/golden-apple.svg' },
+      { name: 'Ender Pearl', icon: '/assets/themes/minecraft/ender-pearl.svg' },
+      { name: 'Emerald', icon: '/assets/themes/minecraft/emerald.svg' },
+      { name: 'Diamond Pickaxe', icon: '/assets/themes/minecraft/pickaxe.svg' },
       { name: 'Redstone Dust', icon: '/assets/themes/minecraft/redstone.svg' },
-      { name: 'Diamond Pickaxe', icon: '/assets/themes/minecraft/pickaxe.svg' }
+      { name: 'Bow', icon: '/assets/themes/minecraft/bow.svg' },
+      { name: 'Pixel Torch', icon: '/assets/themes/minecraft/pixel-torch.svg' },
+      { name: 'Creeper Face', icon: '/assets/themes/minecraft/creeper.svg' }
     ],
     overview: 'Full-stack Minecraft server operations on MGU.One, featuring custom Java plugins like Demand-Balancer (dynamic in-game economy balancing) and Pterodactyl AI Gateway (upgraded-octo-chainsaw) for headless server management.',
     problem: 'Minecraft servers require extensive ongoing sysadmin tasks: manual world backups, player permission auditing, economy balancing, and config hot-patching. Traditional remote consoles lack safe in-game contextual intelligence.',

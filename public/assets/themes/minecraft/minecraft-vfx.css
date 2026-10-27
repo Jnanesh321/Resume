@@ -1,0 +1,24 @@
+/* ═════════════════════════════════════════════════════════════════════════════
+   MINECRAFT ATMOSPHERE & PARTICLE VFX ENGINE - STYLES
+   Scoped strictly to html[data-theme-style="minecraft"]
+   ═════════════════════════════════════════════════════════════════════════════ */
+
+#minecraft-vfx-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 95; /* Above hero & project cards, below nav bar (100) and modal (1000) */
+  display: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+html[data-theme-style="minecraft"] #minecraft-vfx-canvas {
+  display: block;
+  opacity: 1;
+}

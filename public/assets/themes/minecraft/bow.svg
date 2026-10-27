@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="48" height="48" shape-rendering="crispEdges">
+  <!-- Bow String (White/Silver taut line) -->
+  <rect x="3" y="3" width="1" height="10" fill="#e2e8f0"/>
+  <!-- Wooden Bow Grip and Limbs -->
+  <!-- Top limb -->
+  <rect x="4" y="2" width="2" height="1" fill="#854d0e"/>
+  <rect x="6" y="2" width="2" height="1" fill="#713f12"/>
+  <rect x="8" y="3" width="2" height="1" fill="#854d0e"/>
+  <rect x="10" y="4" width="2" height="2" fill="#713f12"/>
+  <!-- Center Riser / Grip -->
+  <rect x="11" y="6" width="2" height="4" fill="#a16207"/>
+  <rect x="12" y="7" width="1" height="2" fill="#ca8a04"/>
+  <rect x="10" y="7" width="1" height="2" fill="#713f12"/>
+  <!-- Bottom limb -->
+  <rect x="10" y="10" width="2" height="2" fill="#713f12"/>
+  <rect x="8" y="12" width="2" height="1" fill="#854d0e"/>
+  <rect x="6" y="13" width="2" height="1" fill="#713f12"/>
+  <rect x="4" y="13" width="2" height="1" fill="#854d0e"/>
+  <!-- Limb tips holding string -->
+  <rect x="3" y="2" width="1" height="1" fill="#d4d4d8"/>
+  <rect x="3" y="13" width="1" height="1" fill="#d4d4d8"/>
+</svg>

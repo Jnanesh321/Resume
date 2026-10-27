@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="48" height="48" shape-rendering="crispEdges">
+  <!-- Book Cover Outline -->
+  <rect x="2" y="2" width="12" height="12" fill="#3b0764"/>
+  <!-- Book Leather (Rich Enchanted Purple) -->
+  <rect x="3" y="3" width="10" height="10" fill="#7e22ce"/>
+  <!-- Pages Edge -->
+  <rect x="11" y="4" width="2" height="8" fill="#fef08a"/>
+  <rect x="4" y="11" width="8" height="2" fill="#fef08a"/>
+  <!-- Inner Page Shadow -->
+  <rect x="11" y="5" width="1" height="6" fill="#eab308"/>
+  <rect x="5" y="11" width="6" height="1" fill="#eab308"/>
+  <!-- Corner Metal Clasps -->
+  <rect x="2" y="2" width="2" height="2" fill="#facc15"/>
+  <rect x="2" y="12" width="2" height="2" fill="#facc15"/>
+  <rect x="12" y="2" width="2" height="2" fill="#facc15"/>
+  <!-- Spine Line -->
+  <rect x="4" y="3" width="1" height="10" fill="#581c87"/>
+  <!-- Red Bookmark Ribbon hanging -->
+  <rect x="7" y="11" width="2" height="4" fill="#ef4444"/>
+  <rect x="8" y="14" width="1" height="1" fill="#b91c1c"/>
+  <!-- Enchantment Shimmer band -->
+  <rect x="6" y="5" width="4" height="2" fill="#c084fc"/>
+  <rect x="7" y="7" width="2" height="2" fill="#e879f9"/>
+</svg>
