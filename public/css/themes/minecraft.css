@@ -174,3 +174,445 @@ html[data-fx="low"] #minecraft-vfx-canvas {
 [data-theme="minecraft"] .torch-active #torch-img {
   animation: none !important;
 }
+
+
+/* ══════════════════════════════════════════════════════════════════
+   MINECRAFT INVENTORY & ADVANCEMENT STRUCTURAL LAYOUT STYLES
+   ══════════════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+
+[data-theme="minecraft"] body {
+  font-family: Consolas, 'Courier New', monospace;
+  background-color: #141814;
+  color: #e0e0e0;
+  image-rendering: pixelated;
+  padding-bottom: 80px; /* Space for bottom hotbar */
+  margin: 0;
+}
+
+[data-theme="minecraft"] .mc-pixel-title,
+[data-theme="minecraft"] .mc-gui-title,
+[data-theme="minecraft"] .mc-adv-title,
+[data-theme="minecraft"] .mc-splash-text,
+[data-theme="minecraft"] .mc-btn span,
+[data-theme="minecraft"] .slot-num {
+  font-family: 'Press Start 2P', monospace;
+}
+
+[data-theme="minecraft"] .mc-readable-body {
+  font-family: Consolas, 'Courier New', monospace;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* XP Scroll Bar */
+[data-theme="minecraft"] .mc-xp-bar-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: #182218;
+  border-bottom: 2px solid #000000;
+  z-index: 1000;
+}
+
+[data-theme="minecraft"] .mc-xp-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: #55ff55;
+  box-shadow: 0 0 8px #55ff55;
+}
+
+[data-theme="minecraft"] .mc-xp-level-badge {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #000000;
+  color: #55ff55;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.8rem;
+  padding: 2px 8px;
+  border: 2px solid #3f8e3f;
+  border-radius: 2px;
+}
+
+/* Minecraft Hero (Signboard Frame) */
+[data-theme="minecraft"] .mc-hero-section {
+  padding: 60px 16px 40px;
+  display: flex;
+  justify-content: center;
+}
+
+[data-theme="minecraft"] .mc-signboard-frame {
+  background: #5c3e21;
+  border: 4px solid #382414;
+  box-shadow: inset 4px 4px 0 #7a532d, inset -4px -4px 0 #2b1b0d, 0 8px 0 #000000;
+  padding: 32px;
+  max-width: 800px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+}
+
+[data-theme="minecraft"] .mc-splash-text {
+  font-size: 0.95rem;
+  color: #ffff55;
+  text-shadow: 2px 2px 0 #3f3f00;
+  margin-bottom: 16px;
+  display: inline-block;
+}
+
+[data-theme="minecraft"] .mc-pixel-title {
+  font-size: clamp(1.6rem, 4vw, 2.8rem);
+  color: #ffffff;
+  text-shadow: 4px 4px 0 #3f3f3f;
+  margin: 0 0 10px;
+  letter-spacing: -0.05em;
+}
+
+[data-theme="minecraft"] .mc-pixel-subtitle {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.85rem;
+  color: #55ff55;
+  margin: 0 0 20px;
+}
+
+[data-theme="minecraft"] .mc-player-hud {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+  padding: 12px;
+  background: rgba(0,0,0,0.4);
+  border: 2px solid #2b1b0d;
+}
+
+[data-theme="minecraft"] .mc-hud-label {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.7rem;
+  color: #ffffff;
+  margin-left: 6px;
+}
+
+[data-theme="minecraft"] .mc-hero-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+[data-theme="minecraft"] .mc-btn {
+  background: #737373;
+  border: 3px solid #000000;
+  box-shadow: inset 3px 3px 0 #adadad, inset -3px -3px 0 #3b3b3b;
+  color: #ffffff;
+  padding: 10px 18px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 0.75rem;
+}
+
+[data-theme="minecraft"] .mc-btn:hover {
+  background: #858585;
+}
+
+[data-theme="minecraft"] .mc-btn:active,
+[data-theme="minecraft"] .mc-btn.block-breaking {
+  box-shadow: inset 3px 3px 0 #3b3b3b, inset -3px -3px 0 #adadad;
+  transform: translate(2px, 2px);
+}
+
+[data-theme="minecraft"] .mc-btn-primary {
+  background: #3f8e3f;
+  box-shadow: inset 3px 3px 0 #6bd36b, inset -3px -3px 0 #1b4f1b;
+}
+
+/* GUI Frames */
+[data-theme="minecraft"] .mc-gui-frame {
+  background: #c6c6c6;
+  border: 4px solid #000000;
+  box-shadow: inset 4px 4px 0 #ffffff, inset -4px -4px 0 #555555;
+  max-width: 950px;
+  margin: 30px auto;
+  padding: 20px;
+  color: #3f3f3f;
+}
+
+[data-theme="minecraft"] .mc-gui-header {
+  border-bottom: 3px solid #555555;
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+}
+
+[data-theme="minecraft"] .mc-gui-title {
+  font-size: 0.95rem;
+  color: #3f3f3f;
+  letter-spacing: -0.02em;
+}
+
+/* Minecraft 3x9 Inventory Grid */
+[data-theme="minecraft"] .mc-inventory-grid {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 6px;
+  background: #8b8b8b;
+  border: 3px solid #373737;
+  padding: 10px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+[data-theme="minecraft"] .mc-slot {
+  aspect-ratio: 1 / 1;
+  background: #8b8b8b;
+  border: 2px solid #373737;
+  box-shadow: inset 2px 2px 0 #373737, inset -2px -2px 0 #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+}
+
+[data-theme="minecraft"] .mc-slot:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+[data-theme="minecraft"] .mc-item-icon {
+  font-size: 1.4rem;
+}
+
+[data-theme="minecraft"] .mc-slot-stack {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.55rem;
+  color: #ffffff;
+  text-shadow: 1px 1px 0 #000000;
+}
+
+/* Tooltip Box */
+[data-theme="minecraft"] .mc-tooltip-box {
+  display: none;
+  position: absolute;
+  background: #100010;
+  border: 3px solid #2c0866;
+  box-shadow: inset 2px 2px 0 #5218a0, inset -2px -2px 0 #190538;
+  padding: 8px 12px;
+  color: #ffffff;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.65rem;
+  z-index: 2000;
+  pointer-events: none;
+}
+
+[data-theme="minecraft"] .mc-tooltip-title {
+  color: #55ffff;
+  margin-bottom: 4px;
+}
+
+[data-theme="minecraft"] .mc-tooltip-cat {
+  color: #aaaaaa;
+  margin-bottom: 4px;
+}
+
+[data-theme="minecraft"] .mc-tooltip-lore {
+  color: #ffff55;
+}
+
+/* Advancements Tree */
+[data-theme="minecraft"] .advancements-frame {
+  background: #2b2b2b;
+  color: #ffffff;
+}
+
+[data-theme="minecraft"] .mc-advancements-tree {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+[data-theme="minecraft"] .mc-advancement-node {
+  display: flex;
+  gap: 16px;
+  background: #3c3c3c;
+  border: 3px solid #5a5a5a;
+  padding: 14px;
+}
+
+[data-theme="minecraft"] .mc-adv-frame {
+  width: 48px;
+  height: 48px;
+  background: #555555;
+  border: 3px solid #8e8e8e;
+  box-shadow: inset 2px 2px 0 #aaaaaa, inset -2px -2px 0 #222222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #ffff55;
+  flex-shrink: 0;
+}
+
+[data-theme="minecraft"] .mc-adv-title {
+  font-size: 0.85rem;
+  margin: 0 0 4px;
+}
+
+[data-theme="minecraft"] .mc-adv-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+/* Achievements List */
+[data-theme="minecraft"] .mc-achievements-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+[data-theme="minecraft"] .mc-achievement-card {
+  display: flex;
+  gap: 16px;
+  background: #e1e1e1;
+  border: 2px solid #555555;
+  padding: 12px 16px;
+}
+
+[data-theme="minecraft"] .mc-ach-icon {
+  font-size: 2rem;
+}
+
+[data-theme="minecraft"] .mc-ach-title {
+  font-size: 0.85rem;
+  color: #2b2b2b;
+  margin: 0;
+}
+
+[data-theme="minecraft"] .mc-ach-xp {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.7rem;
+  color: #2e8b57;
+  font-weight: 700;
+}
+
+/* Book & Quill */
+[data-theme="minecraft"] .mc-book-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  background: #e8d8b8;
+  border: 3px solid #8a6a40;
+  padding: 24px;
+  color: #2b1d0c;
+}
+
+[data-theme="minecraft"] .mc-book-heading {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.9rem;
+  color: #4a3319;
+  margin-top: 0;
+}
+
+[data-theme="minecraft"] .mc-input {
+  width: 100%;
+  padding: 8px;
+  background: #fdf6e2;
+  border: 2px solid #8a6a40;
+  color: #2b1d0c;
+  box-sizing: border-box;
+  margin-top: 4px;
+  margin-bottom: 10px;
+}
+
+/* Minecraft Fixed Hotbar (9 Slots Locked to Bottom) */
+[data-theme="minecraft"] .mc-hotbar-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  z-index: 1000;
+  padding-bottom: 8px;
+}
+
+[data-theme="minecraft"] .mc-hotbar-frame {
+  display: flex;
+  background: #8f8f8f;
+  border: 3px solid #373737;
+  box-shadow: inset 2px 2px 0 #ffffff, inset -2px -2px 0 #373737, 0 8px 24px rgba(0,0,0,0.8);
+  padding: 4px;
+  gap: 4px;
+}
+
+[data-theme="minecraft"] .mc-hotbar-slot {
+  width: 44px;
+  height: 44px;
+  background: #8b8b8b;
+  border: 2px solid #373737;
+  box-shadow: inset 2px 2px 0 #373737, inset -2px -2px 0 #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #ffffff;
+  position: relative;
+}
+
+[data-theme="minecraft"] .mc-hotbar-slot:hover,
+[data-theme="minecraft"] .mc-hotbar-slot.active {
+  border-color: #ffffff;
+  background: #a0a0a0;
+}
+
+[data-theme="minecraft"] .slot-num {
+  position: absolute;
+  top: 2px;
+  left: 3px;
+  font-size: 0.5rem;
+  color: #373737;
+}
+
+[data-theme="minecraft"] .slot-icon {
+  font-size: 1.1rem;
+}
+
+/* Bedrock Footer */
+[data-theme="minecraft"] .mc-footer {
+  background: #111111;
+  border-top: 3px solid #333333;
+  padding: 16px;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #888888;
+  margin-bottom: 50px;
+}
+
+[data-theme="minecraft"] .mc-coords {
+  display: block;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.65rem;
+  color: #55ff55;
+  margin: 6px 0;
+}
+
+@media (max-width: 800px) {
+  [data-theme="minecraft"] .mc-book-container {
+    grid-template-columns: 1fr;
+  }
+  [data-theme="minecraft"] .mc-inventory-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}

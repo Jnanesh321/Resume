@@ -216,3 +216,645 @@
   content: '⚡ AWS CloudShell (ap-south-1) :: ';
   color: #ff9900;
 }
+
+
+/* ══════════════════════════════════════════════════════════════════
+   AWS CONSOLE STRUCTURAL LAYOUT STYLES
+   ══════════════════════════════════════════════════════════════════ */
+
+[data-theme="aws"] body {
+  font-family: 'Amazon Ember', 'Roboto Mono', 'SFMono-Regular', Consolas, 'Inter', monospace;
+  background-color: #0f172a;
+  color: #eaeded;
+  margin: 0;
+  padding: 0;
+}
+
+/* AWS Fixed Top Bar */
+[data-theme="aws"] .aws-top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 48px;
+  background: #161e2e;
+  border-bottom: 1px solid #2a3b5c;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  z-index: 1000;
+  box-sizing: border-box;
+}
+
+[data-theme="aws"] .aws-top-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+[data-theme="aws"] .aws-menu-toggle {
+  background: transparent;
+  border: none;
+  color: #eaeded;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 4px;
+}
+[data-theme="aws"] .aws-menu-toggle:hover {
+  background: #232f3e;
+}
+
+[data-theme="aws"] .aws-console-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+[data-theme="aws"] .aws-brand-aws {
+  background: #ff9900;
+  color: #111827;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 0.8rem;
+  letter-spacing: -0.05em;
+  font-weight: 900;
+}
+
+[data-theme="aws"] .aws-brand-divider {
+  color: #4b5563;
+}
+
+[data-theme="aws"] .aws-brand-title {
+  font-size: 0.88rem;
+  color: #eaeded;
+}
+
+[data-theme="aws"] .aws-search-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #0f172a;
+  border: 1px solid #374151;
+  border-radius: 4px;
+  padding: 4px 10px;
+  width: 280px;
+  color: #9ca3af;
+}
+
+[data-theme="aws"] .aws-search-box input {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  outline: none;
+  font-size: 0.8rem;
+  width: 100%;
+  font-family: inherit;
+}
+
+[data-theme="aws"] .aws-top-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+[data-theme="aws"] .aws-top-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background: #1f2937;
+  border: 1px solid #374151;
+  border-radius: 4px;
+  font-size: 0.78rem;
+  color: #d1d5db;
+}
+
+[data-theme="aws"] .aws-region-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+}
+
+[data-theme="aws"] .aws-account-avatar {
+  background: #ff9900;
+  color: #111827;
+  font-weight: 700;
+  padding: 1px 5px;
+  border-radius: 2px;
+  font-size: 0.7rem;
+}
+
+/* AWS Console App Layout */
+[data-theme="aws"] .aws-console-layout {
+  display: flex;
+  margin-top: 48px;
+  min-height: calc(100vh - 48px);
+}
+
+/* Collapsible Left Sidebar */
+[data-theme="aws"] .aws-sidebar {
+  width: 240px;
+  background: #131a22;
+  border-right: 1px solid #232f3e;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.25s ease;
+}
+
+[data-theme="aws"] .aws-sidebar.collapsed {
+  width: 60px;
+}
+
+[data-theme="aws"] .aws-sidebar.collapsed .aws-nav-text,
+[data-theme="aws"] .aws-sidebar.collapsed .aws-sidebar-title,
+[data-theme="aws"] .aws-sidebar.collapsed .aws-sidebar-footer {
+  display: none;
+}
+
+[data-theme="aws"] .aws-sidebar-header {
+  padding: 16px;
+  border-bottom: 1px solid #232f3e;
+}
+
+[data-theme="aws"] .aws-sidebar-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #9ca3af;
+  letter-spacing: 0.05em;
+}
+
+[data-theme="aws"] .aws-sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0;
+}
+
+[data-theme="aws"] .aws-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  color: #d1d5db;
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: background 0.15s ease;
+}
+
+[data-theme="aws"] .aws-nav-link:hover,
+[data-theme="aws"] .aws-nav-link.active {
+  background: #232f3e;
+  color: #ff9900;
+  border-left: 3px solid #ff9900;
+}
+
+[data-theme="aws"] .aws-sidebar-footer {
+  margin-top: auto;
+  padding: 16px;
+  border-top: 1px solid #232f3e;
+}
+
+[data-theme="aws"] .aws-env-badge {
+  font-size: 0.7rem;
+  color: #10b981;
+}
+
+/* Main Viewport & Breadcrumbs */
+[data-theme="aws"] .aws-main-viewport {
+  flex: 1;
+  background: #0b1120;
+  padding: 16px 24px 80px;
+  overflow-y: auto;
+}
+
+[data-theme="aws"] .aws-breadcrumb-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  color: #9ca3af;
+  margin-bottom: 20px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #1f2937;
+}
+
+[data-theme="aws"] .crumb-sep {
+  color: #4b5563;
+}
+
+[data-theme="aws"] .crumb-current {
+  color: #eaeded;
+  font-weight: 600;
+}
+
+/* AWS Dashboard Hero */
+[data-theme="aws"] .aws-hero-dashboard {
+  margin-bottom: 28px;
+}
+
+[data-theme="aws"] .aws-dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+[data-theme="aws"] .aws-dash-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 4px;
+}
+
+[data-theme="aws"] .aws-dash-sub {
+  font-size: 0.85rem;
+  color: #9ca3af;
+  margin: 0;
+}
+
+[data-theme="aws"] .aws-dash-actions {
+  display: flex;
+  gap: 10px;
+}
+
+[data-theme="aws"] .aws-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+  font-family: inherit;
+}
+
+[data-theme="aws"] .aws-btn-primary {
+  background: #ff9900;
+  color: #111827;
+}
+[data-theme="aws"] .aws-btn-primary:hover {
+  background: #ec8c00;
+}
+
+[data-theme="aws"] .aws-btn-secondary {
+  background: #1f2937;
+  color: #ffffff;
+  border-color: #374151;
+}
+[data-theme="aws"] .aws-btn-secondary:hover {
+  background: #374151;
+}
+
+[data-theme="aws"] .aws-btn-sm {
+  padding: 4px 8px;
+  font-size: 0.78rem;
+}
+
+/* Widget Grid */
+[data-theme="aws"] .aws-widgets-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+[data-theme="aws"] .aws-widget-card {
+  background: #161e2e;
+  border: 1px solid #232f3e;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+[data-theme="aws"] .aws-widget-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  background: #1a2333;
+  border-bottom: 1px solid #232f3e;
+}
+
+[data-theme="aws"] .aws-widget-header h3 {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #eaeded;
+  margin: 0;
+}
+
+[data-theme="aws"] .aws-widget-body {
+  padding: 14px;
+}
+
+[data-theme="aws"] .aws-telemetry-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+[data-theme="aws"] .telemetry-item {
+  display: flex;
+  flex-direction: column;
+}
+
+[data-theme="aws"] .tel-label {
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+[data-theme="aws"] .tel-val {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-top: 2px;
+}
+
+[data-theme="aws"] .tel-val.ok {
+  color: #10b981;
+}
+
+[data-theme="aws"] .aws-status-badge {
+  font-size: 0.72rem;
+  padding: 2px 8px;
+  border-radius: 3px;
+}
+
+[data-theme="aws"] .aws-status-badge.ok {
+  background: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+[data-theme="aws"] .aws-recent-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+[data-theme="aws"] .aws-recent-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  padding: 4px 0;
+  border-bottom: 1px solid #1f2937;
+}
+
+[data-theme="aws"] .aws-res-name {
+  font-weight: 600;
+  color: #ffffff;
+}
+
+[data-theme="aws"] .aws-res-type {
+  color: #9ca3af;
+  margin-left: auto;
+  font-size: 0.75rem;
+}
+
+[data-theme="aws"] .aws-res-status.active {
+  color: #10b981;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+[data-theme="aws"] .aws-cli-snippet {
+  background: #0f172a;
+  border: 1px solid #374151;
+  border-radius: 4px;
+  padding: 10px;
+  font-family: 'Roboto Mono', Consolas, monospace;
+  font-size: 0.78rem;
+  margin-bottom: 12px;
+}
+
+[data-theme="aws"] .aws-cli-line {
+  color: #ff9900;
+  margin: 0 0 4px;
+}
+
+[data-theme="aws"] .aws-cli-output {
+  color: #10b981;
+  margin: 0;
+}
+
+/* AWS Table Styles */
+[data-theme="aws"] .aws-section {
+  margin-bottom: 36px;
+  background: #161e2e;
+  border: 1px solid #232f3e;
+  border-radius: 6px;
+  padding: 16px;
+}
+
+[data-theme="aws"] .aws-section-bar {
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #232f3e;
+}
+
+[data-theme="aws"] .aws-section-bar h2 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+[data-theme="aws"] .aws-table-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+[data-theme="aws"] .aws-filter-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #0f172a;
+  border: 1px solid #374151;
+  border-radius: 4px;
+  padding: 4px 10px;
+  width: 260px;
+}
+
+[data-theme="aws"] .aws-filter-search input {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  outline: none;
+  font-size: 0.8rem;
+  width: 100%;
+}
+
+[data-theme="aws"] .aws-table-container {
+  overflow-x: auto;
+}
+
+[data-theme="aws"] .aws-data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+
+[data-theme="aws"] .aws-data-table th {
+  background: #1a2333;
+  color: #9ca3af;
+  text-align: left;
+  padding: 8px 12px;
+  border-bottom: 1px solid #232f3e;
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+[data-theme="aws"] .aws-data-table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid #1f2937;
+  color: #d1d5db;
+}
+
+[data-theme="aws"] .aws-data-table tr:hover {
+  background: rgba(255, 153, 0, 0.05);
+}
+
+[data-theme="aws"] .aws-cat-tag {
+  background: #1f2937;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+[data-theme="aws"] .aws-tier-pill {
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+[data-theme="aws"] .tier-core { background: rgba(16, 185, 129, 0.2); color: #10b981; }
+[data-theme="aws"] .tier-working { background: rgba(59, 130, 246, 0.2); color: #3b82f6; }
+[data-theme="aws"] .tier-exploring { background: rgba(245, 158, 11, 0.2); color: #f59e0b; }
+
+[data-theme="aws"] .aws-status-indicator.ok::before {
+  content: '● ';
+  color: #10b981;
+}
+
+/* AWS Inspector Panel */
+[data-theme="aws"] .aws-inspector-panel {
+  margin-top: 16px;
+  background: #0f172a;
+  border: 1px solid #232f3e;
+  border-radius: 4px;
+}
+
+[data-theme="aws"] .aws-inspector-tabs {
+  display: flex;
+  background: #161e2e;
+  border-bottom: 1px solid #232f3e;
+}
+
+[data-theme="aws"] .inspector-tab {
+  background: transparent;
+  border: none;
+  padding: 8px 16px;
+  color: #9ca3af;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+}
+
+[data-theme="aws"] .inspector-tab.active {
+  color: #ff9900;
+  border-bottom-color: #ff9900;
+}
+
+[data-theme="aws"] .aws-inspector-content {
+  padding: 16px;
+  font-size: 0.85rem;
+}
+
+/* CloudShell Dock */
+[data-theme="aws"] .aws-cloudshell-dock {
+  position: fixed;
+  bottom: 28px;
+  right: 24px;
+  width: 500px;
+  max-width: 90vw;
+  background: #0f172a;
+  border: 1px solid #ff9900;
+  border-radius: 6px;
+  z-index: 1000;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+}
+
+[data-theme="aws"] .cloudshell-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 12px;
+  background: #1e293b;
+  border-bottom: 1px solid #334155;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #eaeded;
+}
+
+[data-theme="aws"] .cloudshell-body {
+  padding: 12px;
+  font-family: monospace;
+  font-size: 0.78rem;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+[data-theme="aws"] .aws-cloudshell-dock:not(.expanded) .cloudshell-body {
+  display: none;
+}
+
+/* Global Footer */
+[data-theme="aws"] .aws-console-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 28px;
+  background: #161e2e;
+  border-top: 1px solid #2a3b5c;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  font-size: 0.72rem;
+  color: #9ca3af;
+  z-index: 999;
+  box-sizing: border-box;
+}
+
+[data-theme="aws"] .aws-foot-sep {
+  margin: 0 8px;
+  color: #4b5563;
+}
+
+@media (max-width: 800px) {
+  [data-theme="aws"] .aws-sidebar {
+    position: absolute;
+    height: 100%;
+    z-index: 1001;
+    transform: translateX(-100%);
+  }
+  [data-theme="aws"] .aws-sidebar.open {
+    transform: translateX(0);
+  }
+}

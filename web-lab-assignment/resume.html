@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Resume of Jnanesh Sharma H. — Computer Science & Engineering Undergraduate, Backend & Systems Developer.">
+  <title>Jnanesh Sharma H. — Resume</title>
+
+  <!-- Typography & Styling -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Shared Top Navigation (Screen Only) -->
+  <header class="site-topbar no-print">
+    <div class="topbar-inner">
+      <a href="index.html" class="topbar-brand">Jnanesh Sharma H.</a>
+      <nav aria-label="Main Navigation">
+        <ul class="topbar-nav">
+          <li><a href="index.html">Overview</a></li>
+          <li><a href="resume.html" class="active">Resume</a></li>
+          <li><a href="biodata.html">Bio-Data</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Screen-Only Sub-Toolbar (Filters & Controls) -->
+  <aside class="action-subbar no-print" aria-label="Document Controls">
+    <div class="filter-group" role="toolbar" aria-label="Filter Entries">
+      <button type="button" class="filter-pill active" data-filter="all" aria-pressed="true">All</button>
+      <button type="button" class="filter-pill" data-filter="backend" aria-pressed="false">Backend</button>
+      <button type="button" class="filter-pill" data-filter="systems" aria-pressed="false">Systems</button>
+      <button type="button" class="filter-pill" data-filter="fullstack" aria-pressed="false">Full-Stack</button>
+    </div>
+    <div class="toolbar-controls">
+      <button type="button" class="btn-util btn-zoom" title="Toggle document viewing width">Fit Width</button>
+      <button type="button" class="btn-util btn-print" title="Print document or save as clean PDF">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+        Print / Save PDF
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main Content Wrapper -->
+  <div class="main-wrapper">
+    <main class="paper-sheet" id="resume-sheet">
+
+      <!-- Executive Header -->
+      <header class="resume-header">
+        <h1 class="doc-name">Jnanesh Sharma H.</h1>
+        <p class="contact-line">
+          <a href="mailto:jnaneshsharmah@gmail.com">jnaneshsharmah@gmail.com</a>
+          <span class="contact-sep">|</span>
+          <a href="tel:+917994655828">+91 7994655828</a>
+          <span class="contact-sep">|</span>
+          <span>India</span>
+          <span class="contact-sep">|</span>
+          <a href="https://github.com/Jnanesh321" target="_blank" rel="noopener noreferrer">github.com/Jnanesh321</a>
+        </p>
+      </header>
+
+      <!-- Work Experience -->
+      <section aria-labelledby="experience-heading">
+        <h2 id="experience-heading">Experience</h2>
+
+        <article class="entry" data-category="backend">
+          <div class="entry-header">
+            <span class="entry-title">Software Intern &mdash; <span class="entry-subtitle">Akanksha Charitable Trust &mdash; Codex Learning Platform Backend</span></span>
+            <span class="entry-date">Jan 2026 &ndash; Jul 2026</span>
+          </div>
+          <ul>
+            <li>Implemented JWT authentication improvements, including security validation for tampered and invalid tokens.</li>
+            <li>Designed and built a Firebase Cloud Messaging (FCM) notification service with a lightweight, in-process scheduler for daily streak reminders.</li>
+            <li>Integrated achievement notifications with the gamification system and extended user models with configurable notification preferences.</li>
+            <li>Contributed unit tests covering notification logic, gamification milestones, and authentication scenarios.</li>
+            <li>Enhanced backend repository support and Firestore indexing to optimize notification operations.</li>
+          </ul>
+        </article>
+
+        <article class="entry" data-category="systems">
+          <div class="entry-header">
+            <span class="entry-title">Creative Head &mdash; <span class="entry-subtitle">WeMod (Atlantis Corporation)</span></span>
+            <span class="entry-date">2022 &ndash; 2025</span>
+          </div>
+          <ul>
+            <li>Led creative planning and asset production across gaming and YouTube creator initiatives, including work with creators such as MrGamerJay and Mineplex-related projects.</li>
+            <li>Coordinated cross-functional deliverables involving creator specifications, production schedules, and community assets.</li>
+            <li>Owned end-to-end creative workflows and communication between external partners and internal teams.</li>
+          </ul>
+        </article>
+      </section>
+
+      <!-- Projects -->
+      <section aria-labelledby="projects-heading">
+        <h2 id="projects-heading">Projects</h2>
+
+        <article class="entry" data-category="backend">
+          <div class="entry-header">
+            <span class="entry-title">O~Bele / Payaswini &mdash; Agricultural Tool Rental Platform</span>
+            <span class="entry-date">In Progress</span>
+          </div>
+          <div class="entry-meta">Node.js, Express.js, REST APIs</div>
+          <ul>
+            <li>Designing a peer-to-peer agricultural equipment rental platform connecting farm machinery owners with local operators.</li>
+            <li>Structured rental workflows around hourly and daily pricing, equipment deposits, and consumable tracking.</li>
+            <li>Modeled certified-operator requirements with explicit operator selection and a 4-hour confirmation SLA, preventing silent fallback to self-service when certification is required.</li>
+            <li>Implementing Express route controllers, modular routing, and request-validation middleware for application state transitions.</li>
+          </ul>
+        </article>
+
+        <article class="entry" data-category="fullstack">
+          <div class="entry-header">
+            <span class="entry-title">E-Library Management System</span>
+          </div>
+          <div class="entry-meta">MongoDB, Express.js, React, Node.js (MERN)</div>
+          <ul>
+            <li>Engineered a full-stack library management application using the MERN stack.</li>
+            <li>Connected RESTful API routes with MongoDB for persistent catalog data and CRUD operations.</li>
+            <li>Structured backend routing using JSON middleware, request parameter parsing, and modular controllers.</li>
+          </ul>
+        </article>
+
+        <article class="entry" data-category="backend">
+          <div class="entry-header">
+            <span class="entry-title">Cells AMS &mdash; Attendance Management System</span>
+            <span class="entry-date">In Progress</span>
+          </div>
+          <div class="entry-meta">JavaScript, Node.js, Express.js, Relational Schemas</div>
+          <ul>
+            <li>Engineering an Express-backed state tracking engine with batch status logging, relational schemas, and automated attendance threshold auditing.</li>
+            <li>Structuring administrative workflows to flag member attendance deficits and generate exportable eligibility logs.</li>
+          </ul>
+        </article>
+
+        <article class="entry" data-category="systems">
+          <div class="entry-header">
+            <span class="entry-title">MGU.One AIBridge &mdash; Autonomous Minecraft Server Infrastructure</span>
+            <span class="entry-date">Live System</span>
+          </div>
+          <div class="entry-meta">Java 17, Paper API, OpenCode AI, Bukkit Async, Linux</div>
+          <ul>
+            <li>Engineered a custom Java Paper plugin integrating an in-game bridge to a local OpenCode headless engine (port 4096) for automated server administration.</li>
+            <li>Implemented FileGuard sandboxing with automated snapshot rollbacks prior to configuration hot-patching.</li>
+            <li>Offloaded AI prompt processing to async Bukkit workers, guaranteeing zero main-thread lag and 20.0 TPS stability under high load.</li>
+          </ul>
+        </article>
+      </section>
+
+      <!-- Technical Skills -->
+      <section aria-labelledby="skills-heading">
+        <h2 id="skills-heading">Technical Skills</h2>
+        <div class="skills-row"><span class="skills-label">Languages: </span>C++, C, JavaScript, Java, Python</div>
+        <div class="skills-row"><span class="skills-label">Backend &amp; Web Development: </span>Node.js, Express.js, RESTful APIs, React, MongoDB</div>
+        <div class="skills-row"><span class="skills-label">Tools &amp; Version Control: </span>Git, GitHub</div>
+        <div class="skills-row"><span class="skills-label">Core Fundamentals: </span>Data Structures &amp; Algorithms, Object-Oriented Programming (OOP), Database Management Systems (DBMS)</div>
+      </section>
+
+      <!-- Education -->
+      <section aria-labelledby="education-heading">
+        <h2 id="education-heading">Education</h2>
+        <article class="entry">
+          <div class="entry-header">
+            <span class="entry-title">Vivekananda College of Engineering and Technology (VCET) &mdash; Affiliated with VTU</span>
+            <span class="entry-date">Expected 2028</span>
+          </div>
+          <div class="entry-meta">Bachelor of Engineering (B.E.) in Computer Science Engineering &mdash; 3rd Year, Semester 5 &mdash; CGPA: 7.4 / 10.0</div>
+        </article>
+      </section>
+
+      <!-- Leadership & Community -->
+      <section aria-labelledby="leadership-heading">
+        <h2 id="leadership-heading">Leadership &amp; Community</h2>
+        <article class="entry">
+          <div class="entry-header">
+            <span class="entry-title">Administrator, MGU.One Minecraft Server</span>
+            <span class="entry-date">Mar 2025 &ndash; Present</span>
+          </div>
+          <ul>
+            <li>Administer ongoing server operations and community moderation.</li>
+            <li>Manage operational workflows and user support while coordinating platform rules and community operations.</li>
+          </ul>
+        </article>
+        <article class="entry">
+          <div class="entry-header">
+            <span class="entry-title">Member, CoRE Club &mdash; VCET</span>
+          </div>
+        </article>
+      </section>
+
+      <!-- Technical Activities & Certifications -->
+      <section aria-labelledby="activities-heading">
+        <h2 id="activities-heading">Technical Activities &amp; Certifications</h2>
+        <ul>
+          <li>Participated in the IEEE Xtreme Competitive Programming competition.</li>
+          <li>Solved approximately 50 algorithmic problems on LeetCode.</li>
+          <li>Built custom integrations including Demand Balancer ShopGUI and BWLava BW2023.</li>
+          <li>Python Programming Certificate &mdash; MICE Institute.</li>
+          <li>Entrepreneurship Workshop &mdash; NITK Surathkal.</li>
+        </ul>
+      </section>
+
+    </main>
+  </div>
+
+  <footer class="site-footer no-print">
+    &copy; 2026 Jnanesh Sharma H. &bull; Puttur, Karnataka
+  </footer>
+
+  <!-- Scripts: jQuery CDN + Local Interactivity -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,634 @@
+/* ==========================================================================
+   Jnanesh Sharma H. — Personal Website & Document Stylesheet
+   Executive Paper-Sheet Theme with Dark Slate Backdrop
+   ========================================================================== */
+
+/* --- Root & Color Variables --- */
+:root {
+  --bg-backdrop: #0d1117;
+  --bg-toolbar: rgba(13, 17, 23, 0.95);
+  --bg-sheet: #ffffff;
+  --bg-table-subtle: #f8fafc;
+  --bg-card: #ffffff;
+
+  --navy-primary: #14304d;
+  --navy-dark: #0c1e33;
+  --accent-cyan: #38bdf8;
+  --accent-cyan-hover: #0284c7;
+
+  --text-dark: #111111;
+  --text-body: #222222;
+  --text-muted: #444444;
+  --text-light: #e2e8f0;
+  --text-toolbar-muted: #94a3b8;
+
+  --border-sheet: #e2e8f0;
+  --border-table: #d1d5db;
+  --border-toolbar: rgba(255, 255, 255, 0.12);
+
+  --font-doc: 'Calibri', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', Consolas, Monaco, monospace;
+
+  --sheet-max-width: 850px;
+  --shadow-sheet: 0 10px 30px rgba(0, 0, 0, 0.45);
+}
+
+/* --- Base & Reset --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 15px;
+  background-color: var(--bg-backdrop);
+  color: var(--text-dark);
+  font-family: var(--font-doc);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-backdrop);
+  color: var(--text-dark);
+  line-height: 1.45;
+}
+
+/* --- Screen-Only Top Utility Toolbar --- */
+.site-topbar {
+  background-color: var(--bg-toolbar);
+  border-bottom: 1px solid var(--border-toolbar);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  width: 100%;
+}
+
+.topbar-inner {
+  max-width: var(--sheet-max-width);
+  margin: 0 auto;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 54px;
+}
+
+.topbar-brand {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-decoration: none;
+  letter-spacing: 0.2px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.topbar-brand:hover {
+  color: var(--accent-cyan);
+}
+
+.topbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  list-style: none;
+}
+
+.topbar-nav a {
+  text-decoration: none;
+  color: var(--text-toolbar-muted);
+  font-size: 0.88rem;
+  font-weight: 500;
+  padding: 6px 2px;
+  position: relative;
+  transition: color 0.15s ease;
+}
+
+.topbar-nav a:hover {
+  color: #ffffff;
+}
+
+.topbar-nav a.active {
+  color: var(--accent-cyan);
+  font-weight: 600;
+}
+
+.topbar-nav a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--accent-cyan);
+  border-radius: 1px;
+}
+
+/* --- Document Action Sub-Bar (Filters & Print) --- */
+.action-subbar {
+  max-width: var(--sheet-max-width);
+  margin: 14px auto 0 auto;
+  padding: 0 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.filter-pill {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #cbd5e1;
+  font-size: 0.78rem;
+  font-weight: 500;
+  padding: 4px 11px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s ease;
+}
+
+.filter-pill:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+}
+
+.filter-pill.active {
+  background: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+  color: #090d13;
+  font-weight: 600;
+}
+
+.toolbar-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-util {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  font-family: inherit;
+  text-decoration: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-zoom {
+  background: rgba(255, 255, 255, 0.08);
+  color: #cbd5e1;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.btn-zoom:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+}
+
+.btn-print {
+  background: var(--accent-cyan);
+  color: #090d13;
+  border: none;
+}
+
+.btn-print:hover {
+  background: var(--accent-cyan-hover);
+  color: #ffffff;
+}
+
+/* --- Main Layout Wrapper --- */
+.main-wrapper {
+  flex: 1 0 auto;
+  padding: 0 16px 40px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* --- Paper Sheet Document Container --- */
+.paper-sheet {
+  width: 100%;
+  max-width: var(--sheet-max-width);
+  background: var(--bg-sheet);
+  margin: 16px auto 30px auto;
+  padding: 0.65in 0.85in;
+  box-shadow: var(--shadow-sheet);
+  border-radius: 4px;
+  color: var(--text-dark);
+  position: relative;
+  transition: max-width 0.2s ease, transform 0.2s ease;
+}
+
+/* Zoomed / Fit-width state */
+.paper-sheet.fit-width {
+  max-width: 980px;
+}
+
+/* --- Resume Header (Paper Sheet) --- */
+.resume-header {
+  margin-bottom: 14px;
+}
+
+.doc-name {
+  font-size: 26pt;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  color: var(--navy-primary);
+  margin: 0 0 6px 0;
+  line-height: 1.15;
+}
+
+.contact-line {
+  font-size: 10.5pt;
+  color: #333333;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.contact-line a {
+  color: var(--navy-primary);
+  text-decoration: none;
+}
+
+.contact-line a:hover {
+  text-decoration: underline;
+}
+
+.contact-sep {
+  color: #888888;
+  margin: 0 7px;
+}
+
+/* --- Section Headings (Paper Sheet) --- */
+.paper-sheet h2 {
+  font-size: 11.5pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--navy-primary);
+  border-bottom: 1.4px solid var(--navy-primary);
+  padding-bottom: 2px;
+  margin: 13px 0 6px 0;
+}
+
+.paper-sheet h2:first-of-type {
+  margin-top: 0;
+}
+
+/* --- Entries (Experience & Projects) --- */
+.entry {
+  margin-bottom: 7px;
+  page-break-inside: avoid;
+}
+
+.entry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.entry-title {
+  font-weight: 700;
+  font-size: 11pt;
+  color: #111111;
+}
+
+.entry-subtitle {
+  font-style: italic;
+  font-size: 10.6pt;
+  color: #333333;
+}
+
+.entry-date {
+  font-size: 10pt;
+  color: #444444;
+  font-weight: 600;
+  white-space: nowrap;
+  text-align: right;
+}
+
+.entry-meta {
+  font-size: 10.2pt;
+  color: #444444;
+  margin: 1px 0 3px 0;
+}
+
+.paper-sheet ul {
+  margin: 3px 0 0 0;
+  padding-left: 18px;
+}
+
+.paper-sheet li {
+  margin-bottom: 2.5px;
+  font-size: 10.5pt;
+  color: #222222;
+  line-height: 1.4;
+}
+
+.paper-sheet li strong {
+  color: #111111;
+}
+
+/* --- Technical Skills Layout --- */
+.skills-row {
+  margin-bottom: 5px;
+  font-size: 10.5pt;
+  color: #222222;
+  line-height: 1.4;
+}
+
+.skills-label {
+  font-weight: 700;
+  color: #111111;
+}
+
+/* --- Bio-Data Specific Styles --- */
+.biodata-title {
+  font-size: 20pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--navy-primary);
+  text-align: center;
+  margin: 0 0 18px 0;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--navy-primary);
+}
+
+.formal-table-wrap {
+  width: 100%;
+  margin: 6px 0 12px 0;
+}
+
+.formal-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 10pt;
+  color: #222222;
+  border: 1px solid var(--border-table);
+}
+
+.formal-table th,
+.formal-table td {
+  padding: 6px 10px;
+  border: 1px solid var(--border-table);
+  vertical-align: top;
+  line-height: 1.35;
+}
+
+.formal-table th {
+  background-color: var(--bg-table-subtle);
+  color: #111111;
+  font-weight: 700;
+  font-size: 9.5pt;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.formal-table td.field-name {
+  width: 32%;
+  font-weight: 700;
+  color: #111111;
+  background-color: var(--bg-table-subtle);
+}
+
+.formal-table td.field-val {
+  color: #222222;
+}
+
+.placeholder-entry {
+  color: #71717a;
+  font-style: italic;
+}
+
+/* --- Formal Declaration Box --- */
+.declaration-area {
+  margin-top: 18px;
+  padding-top: 10px;
+}
+
+.declaration-text {
+  font-size: 10pt;
+  font-style: italic;
+  color: #333333;
+  margin-bottom: 30px;
+  line-height: 1.45;
+}
+
+.signature-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  font-size: 10pt;
+  color: #111111;
+}
+
+.sig-col {
+  text-align: right;
+}
+
+.sig-rule {
+  width: 180px;
+  border-bottom: 1px solid #111111;
+  margin-bottom: 4px;
+}
+
+/* --- Landing Page Minimal Center Sheet (index.html) --- */
+.landing-card {
+  width: 100%;
+  max-width: 680px;
+  background: var(--bg-sheet);
+  margin: 40px auto;
+  padding: 2.75rem 3rem;
+  box-shadow: var(--shadow-sheet);
+  border-radius: 6px;
+  color: var(--text-dark);
+}
+
+.landing-header {
+  border-bottom: 1.5px solid var(--navy-primary);
+  padding-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.landing-title {
+  font-size: 24pt;
+  font-weight: 700;
+  color: var(--navy-primary);
+  margin: 0 0 6px 0;
+  line-height: 1.15;
+}
+
+.landing-subtitle {
+  font-size: 11pt;
+  color: #4b5563;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.landing-contact {
+  font-size: 10pt;
+  color: #333333;
+}
+
+.landing-contact a {
+  color: var(--navy-primary);
+  text-decoration: none;
+}
+
+.landing-contact a:hover {
+  text-decoration: underline;
+}
+
+.landing-bio {
+  font-size: 11pt;
+  color: #333333;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.doc-links-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.doc-link-card {
+  display: block;
+  text-decoration: none;
+  background-color: var(--bg-table-subtle);
+  border: 1px solid var(--border-sheet);
+  border-radius: 5px;
+  padding: 1rem 1.25rem;
+  transition: all 0.15s ease;
+}
+
+.doc-link-card:hover {
+  border-color: var(--navy-primary);
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(20, 48, 77, 0.08);
+  transform: translateY(-1px);
+}
+
+.doc-link-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11pt;
+  font-weight: 700;
+  color: var(--navy-primary);
+  margin-bottom: 3px;
+}
+
+.doc-link-desc {
+  font-size: 9.8pt;
+  color: #4b5563;
+  font-style: italic;
+  margin: 0;
+}
+
+/* --- Clean Minimal Footer --- */
+.site-footer {
+  flex-shrink: 0;
+  padding: 20px 16px;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-toolbar-muted);
+}
+
+/* ==========================================================================
+   Print Stylesheet (@media print)
+   Generates a spotless, clean white document
+   ========================================================================== */
+@media print {
+  @page {
+    size: A4;
+    margin: 0.55in 0.8in;
+  }
+
+  body {
+    background: transparent !important;
+    color: #000000 !important;
+  }
+
+  .no-print,
+  .site-topbar,
+  .action-subbar,
+  .site-footer {
+    display: none !important;
+  }
+
+  .main-wrapper {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .paper-sheet {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
+
+  .entry {
+    page-break-inside: avoid;
+  }
+
+  .formal-table {
+    border: 1px solid #999999 !important;
+  }
+
+  .formal-table th,
+  .formal-table td {
+    border: 1px solid #999999 !important;
+  }
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+@media (max-width: 768px) {
+  .paper-sheet {
+    padding: 0.4in 0.45in;
+    margin: 12px auto 24px auto;
+  }
+
+  .landing-card {
+    padding: 1.75rem 1.5rem;
+    margin: 20px auto;
+  }
+
+  .action-subbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .toolbar-controls {
+    justify-content: flex-end;
+  }
+}
