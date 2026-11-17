@@ -496,9 +496,31 @@ body {
 }
 
 .landing-header {
+  display: grid;
+  grid-template-columns: 1fr 120px;
+  align-items: center;
+  gap: 18px;
   border-bottom: 1.5px solid var(--navy-primary);
   padding-bottom: 1.25rem;
   margin-bottom: 1.5rem;
+}
+
+.landing-photo {
+  width: 120px;
+  height: 150px;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--border-table);
+  border-radius: 4px;
+  background-color: var(--bg-table-subtle);
+}
+
+.landing-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 28%;
 }
 
 .landing-title {
@@ -651,6 +673,16 @@ body {
   .landing-card {
     padding: 1.75rem 1.5rem;
     margin: 20px auto;
+  }
+
+  .landing-header {
+    grid-template-columns: 1fr 96px;
+    gap: 12px;
+  }
+
+  .landing-photo {
+    width: 96px;
+    height: 120px;
   }
 
   .action-subbar {
