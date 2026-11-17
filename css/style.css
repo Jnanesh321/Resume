@@ -26,7 +26,7 @@
   --border-table: #d1d5db;
   --border-toolbar: rgba(255, 255, 255, 0.12);
 
-  --font-doc: 'Calibri', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-doc: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --font-mono: 'JetBrains Mono', 'SF Mono', Consolas, Monaco, monospace;
 
   --sheet-max-width: 850px;
@@ -402,7 +402,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 28%;
+  object-position: center 18%;
 }
 
 .formal-table-wrap {
@@ -446,11 +446,6 @@ body {
   color: #222222;
 }
 
-.placeholder-entry {
-  color: #71717a;
-  font-style: italic;
-}
-
 /* --- Formal Declaration Box --- */
 .declaration-area {
   margin-top: 18px;
@@ -486,9 +481,9 @@ body {
 /* --- Landing Page Minimal Center Sheet (index.html) --- */
 .landing-card {
   width: 100%;
-  max-width: 680px;
+  max-width: 760px;
   background: var(--bg-sheet);
-  margin: 40px auto;
+  margin: 28px auto;
   padding: 2.75rem 3rem;
   box-shadow: var(--shadow-sheet);
   border-radius: 6px;
@@ -516,6 +511,8 @@ body {
   overflow: hidden;
   border-radius: 12px;
   flex-shrink: 0;
+  border: 1px solid var(--border-sheet);
+  box-shadow: 0 4px 12px rgba(12, 30, 51, 0.08);
 }
 
 .landing-photo img {
@@ -523,7 +520,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: top;
+  object-position: center 18%;
 }
 
 .landing-title {
@@ -583,6 +580,33 @@ body {
   background-color: #ffffff;
   box-shadow: 0 4px 12px rgba(20, 48, 77, 0.08);
   transform: translateY(-1px);
+}
+
+.doc-link-title span:last-child {
+  transition: transform 0.15s ease;
+}
+
+.doc-link-card:hover .doc-link-title span:last-child {
+  transform: translateX(4px);
+}
+
+.action-subbar--end {
+  justify-content: flex-end;
+}
+
+.field-link {
+  color: var(--navy-primary);
+}
+
+.formal-table th.width-28 { width: 28%; }
+.formal-table th.width-30 { width: 30%; }
+.formal-table th.width-20 { width: 20%; }
+.formal-table th.width-10 { width: 10%; }
+.formal-table th.width-12 { width: 12%; }
+
+.signature-label {
+  font-size: 9pt;
+  color: #555555;
 }
 
 .doc-link-title {

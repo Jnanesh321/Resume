@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=2">
 </head>
 <body>
 
@@ -29,7 +29,7 @@
   </header>
 
   <!-- Screen-Only Sub-Toolbar (Controls) -->
-  <aside class="action-subbar no-print" aria-label="Document Controls" style="justify-content: flex-end;">
+  <aside class="action-subbar action-subbar--end no-print" aria-label="Document Controls">
     <div class="toolbar-controls">
       <button type="button" class="btn-util btn-zoom" title="Toggle document viewing width">Fit Width</button>
       <button type="button" class="btn-util btn-print" title="Print document or save as clean PDF">
@@ -83,7 +83,7 @@
               </tr>
               <tr>
                 <td class="field-name">Residential Address</td>
-                <td class="field-val">Kalathur, Karnataka, India <span class="placeholder-entry">[Complete Postal Address]</span></td>
+                <td class="field-val">Kalathur, Puttur Taluk, Dakshina Kannada, Karnataka, India</td>
               </tr>
               <tr>
                 <td class="field-name">Mobile Number</td>
@@ -91,11 +91,11 @@
               </tr>
               <tr>
                 <td class="field-name">Email Address</td>
-                <td class="field-val"><a href="mailto:jnaneshsharmah@gmail.com" style="color: var(--navy-primary);">jnaneshsharmah@gmail.com</a></td>
+                <td class="field-val"><a class="field-link" href="mailto:jnaneshsharmah@gmail.com">jnaneshsharmah@gmail.com</a></td>
               </tr>
               <tr>
                 <td class="field-name">GitHub</td>
-                <td class="field-val"><a href="https://github.com/Jnanesh321" target="_blank" rel="noopener noreferrer" style="color: var(--navy-primary);">github.com/Jnanesh321</a></td>
+                <td class="field-val"><a class="field-link" href="https://github.com/Jnanesh321" target="_blank" rel="noopener noreferrer">github.com/Jnanesh321</a></td>
               </tr>
             </tbody>
           </table>
@@ -109,11 +109,11 @@
           <table class="formal-table" aria-label="Educational Qualifications">
             <thead>
               <tr>
-                <th scope="col" style="width: 28%;">Qualification</th>
-                <th scope="col" style="width: 30%;">Institution</th>
-                <th scope="col" style="width: 20%;">Board / University</th>
-                <th scope="col" style="width: 10%;">Year</th>
-                <th scope="col" style="width: 12%;">Score / CGPA</th>
+                <th class="width-28" scope="col">Qualification</th>
+                <th class="width-30" scope="col">Institution</th>
+                <th class="width-20" scope="col">Board / University</th>
+                <th class="width-10" scope="col">Year</th>
+                <th class="width-12" scope="col">Score / CGPA</th>
               </tr>
             </thead>
             <tbody>
@@ -173,7 +173,7 @@
           <div class="sig-col">
             <div class="sig-rule" aria-hidden="true"></div>
             <p><strong>Jnanesh Sharma H.</strong></p>
-            <p style="font-size: 9pt; color: #555555;">Signature</p>
+            <p class="signature-label">Signature</p>
           </div>
         </div>
       </section>
